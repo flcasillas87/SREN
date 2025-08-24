@@ -5,7 +5,7 @@ import { NavItem } from '../sidebar.component';
 @Component({
   selector: 'app-sidebar-nav',
   standalone: true,
-  imports: [SideNavItemComponent],
+  imports: [],
   templateUrl: './sidebar-nav.component.html',
   styleUrls: ['./sidebar-nav.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
