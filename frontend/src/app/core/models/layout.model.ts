@@ -9,7 +9,7 @@ export type Link = {
     name?: string;
     href?: string;
     icon?: string;
-    iconComponent?: Type<unknown>; // reemplaza `any` por Type<unknown>
+    iconComponent?: Type<unknown>; 
     title?: string;
     variant?: string;
     divider?: boolean;
@@ -26,7 +26,7 @@ export type FooterContent = {
     name?: string;
     href?: string;
     icon?: string;
-    iconComponent?: Type<unknown>; // reemplaza `any` por Type<unknown>
+    iconComponent?: Type<unknown>; 
     title?: string;
     variant?: string;
     divider?: boolean;
@@ -49,7 +49,7 @@ export type MenuItem = {
   name: string;
   href: string;
   icon?: string;
-  iconComponent?: Type<unknown>; // reemplaza `any` por Type<unknown>
+  iconComponent?: Type<unknown>; 
   title?: string;
   variant?: string;
   divider?: boolean;

@@ -1,6 +1,6 @@
 import { Central } from '../../centrales/models/central.model';
 import { CentralesService } from '../../centrales/services/centrales.service';
-import { ChangeDetectionStrategy, Component, computed, Computed, DestroyRef, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, effect, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
@@ -31,17 +31,7 @@ export class CentralesListComponent  {
   
 
   cargarCentrales() {
-    this.loading = true;
-    this.centralesService.listarCentrales().subscribe({
-      next: (data) => {
-        this.centrales = data;
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error('Error cargando centrales:', err);
-        this.loading = false;
-      }
-    });
+
   }
 }
 

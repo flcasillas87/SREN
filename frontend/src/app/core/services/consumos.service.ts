@@ -2,7 +2,7 @@ import { computed, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, of, tap,   } from 'rxjs';
 
-export type Consumption {
+export type Consumption ={
   id: string;
   value: number;
   date: string;

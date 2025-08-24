@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, Computed, DestroyRef, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, effect, inject, signal } from '@angular/core';
 import { FooterContent } from '../../../core/models/layout.model';
 import { FooterContentService } from '../../../core/services/footer-content.service';
 import { MatCardModule } from '@angular/material/card';
@@ -26,7 +26,7 @@ export class FooterComponent {
   private footerContentService = inject(FooterContentService);
   
   // Creamos un signal con computed para manejar el contenido
-  footerContent$ = this.footerContentService.getFooterContent();
+  footerContent$ = this.footerContentService.footerContent();
 
 }
 
