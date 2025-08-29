@@ -1,1 +1,8 @@
-<p>centrales works!</p>
+@for (central of centrales(); track central.central_id) {
+  <li>
+    <strong>{{ central.nombre }}</strong><br>
+    Estado: {{ central.ubicacion_estado }}<br>
+    Tipo: {{ central.tipo_central }}<br>
+    Operación: {{ central.estado_operacion }}
+  </li>
+}

@@ -1,4 +1,4 @@
-export type Consumption = {
+export interface Consumption  {
   id: string;
   date: Date;
   central: string; // ID de la central generadora

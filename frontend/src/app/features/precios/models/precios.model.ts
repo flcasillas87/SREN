@@ -1,4 +1,4 @@
-export type Price = {
+export interface Price  {
   id: string;
   date: Date;
   value: number;
@@ -6,7 +6,7 @@ export type Price = {
   provider: string;
 };
 
-export type PriceForm = {
+export interface PriceForm  {
   date: string;
   value: string;
   currency: 'USD' | 'MXN';

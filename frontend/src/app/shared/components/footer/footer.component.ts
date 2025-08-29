@@ -1,5 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, DestroyRef, effect, inject, signal } from '@angular/core';
-import { FooterContent } from '../../../core/models/layout.model';
+import { ChangeDetectionStrategy, Component, inject,  } from '@angular/core';
 import { FooterContentService } from '../../../core/services/footer-content.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
 import { SidebarHeaderComponent } from './sidebar-header/sidebar-header.component';
 import { SidebarNavComponent } from './sidebar-nav/sidebar-nav.component';
 
-export type NavItem = {
+export interface NavItem  {
   label: string;
   route: string;
 };

@@ -49,12 +49,12 @@
     "@angular/cli": "^20.1.6",
     "@angular/compiler-cli": "^20.1.6",
     "@types/jasmine": "^5.1.8",
-    "angular-eslint": "20.1.1",
+    "angular-eslint": "^20.2.0",
     "autoprefixer": "^10.4.21",
-    "eslint": "^9.29.0",
+    "eslint": "^9.34.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-angular": "^4.1.0",
     "eslint-plugin-prettier": "^5.5.4",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
     "jasmine-core": "^5.9.0",
     "karma": "^6.4.4",
     "karma-chrome-launcher": "^3.2.0",
@@ -63,6 +63,6 @@
     "msw": "^2.10.4",
     "prettier": "^3.6.2",
     "typescript": "^5.8.3",
-    "typescript-eslint": "8.34.1"
+    "typescript-eslint": "^8.41.0"
   }
 }

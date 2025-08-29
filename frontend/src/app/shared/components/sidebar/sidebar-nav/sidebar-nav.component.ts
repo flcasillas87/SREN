@@ -1,6 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
-import { SideNavItemComponent } from '../side-nav-item/side-nav-item.component';
-import { NavItem } from '../sidebar.component';
+import { ChangeDetectionStrategy, Component,Input } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-nav',
@@ -11,8 +9,11 @@ import { NavItem } from '../sidebar.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarNavComponent {
-  
-  // lista de items como signal readonly
-  @Input() data!: NavItem;
-fadeState: any;
+    @Input() data!: { 
+    id: number; 
+    name: string; 
+    link: string; 
+    icon?: string 
+  };
+
 }

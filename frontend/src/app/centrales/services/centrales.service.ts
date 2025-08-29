@@ -1,52 +1,41 @@
-import { inject, Injectable, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { map, tap } from 'rxjs';
-
-export type Central = {
-  central_id: string;
-  nombre: string;
-  ubicacion_estado: string;
-  ubicacion_municipio: string;
-  tipo_central: string;
-  estado_operacion: string;
-  capacidad_mw: number;
-  combustible_principal: string;
-  combustible_secundario: string;
-};
-
-@Injectable({
-  providedIn: 'root',
-})
+import { Injectable, signal } from '@angular/core';
+import { Central } from '../models/central.model';
+@Injectable({ providedIn: 'root' })
 export class CentralesService {
-  private readonly http = inject(HttpClient);
-  private readonly apiUrl = '/graphql';
-
   // Señal reactiva que contiene las centrales
   readonly centrales = signal<Central[]>([]);
+  variable = 'Hola mundo';
+  texto = 'Servicio de Centrales';
 
-  listarCentrales(): void {
-    this.http
-      .post<{ data: { centrales: Central[] } }>(this.apiUrl, {
-        query: `
-        query GetCentrales {
-          centrales {
-            central_id
-            nombre
-            ubicacion_estado
-            ubicacion_municipio
-            tipo_central
-            estado_operacion
-            capacidad_mw
-            combustible_principal
-            combustible_secundario
-          }
-        }
-      `,
-      })
-      .pipe(
-        map(res => res.data.centrales),
-        tap(data => this.centrales.set(data)) // Actualiza la señal
-      )
-      .subscribe();
+  loadCentrales() {
+    const mockData: Central[] = [
+      {
+        central_id: 1,
+        nombre: 'Central A',
+        ubicacion_estado: 'Estado 1',
+        tipo_central: 'Tipo 1',
+        estado_operacion: 'Operativa',
+      },
+      {
+        central_id: 2,
+        nombre: 'Central B',
+        ubicacion_estado: 'Estado 2',
+        tipo_central: 'Tipo 2',
+        estado_operacion: 'En mantenimiento',
+      },
+      {
+        central_id: 3,
+        nombre: 'Central C',
+        ubicacion_estado: 'Estado 3',
+        tipo_central: 'Tipo 3',
+        estado_operacion: 'Operativa',
+      },
+    ];
+    this.setCentrales(mockData);
   }
+
+  setCentrales(lista: Central[]) {
+  this.centrales.set(lista);
+}
+
 }

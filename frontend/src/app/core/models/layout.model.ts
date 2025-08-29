@@ -1,7 +1,7 @@
 import { Type } from '@angular/core';
 
 // Interfaz para el contenido del footer
-export type Link = {
+export interface Link {
   links: {
     id?: string | number;
     url?: string;
@@ -17,7 +17,7 @@ export type Link = {
 };
 
 // Interfaz para el contenido del footer
-export type FooterContent = {
+export interface FooterContent  {
   contactInfo: string;
   links: {
     id?: string | number;
@@ -36,13 +36,13 @@ export type FooterContent = {
 
 // Otras interfaces relacionadas con el layout pueden ser añadidas aquí
 // Ejemplo:
-export type HeaderContent = {
+export interface HeaderContent  {
   title: string;
   logoUrl: string;
   navLinks: { title: string; url: string }[];
 };
 
-export type MenuItem = {
+export interface MenuItem  {
   id: string | number;
   url: string;
   label?: string;

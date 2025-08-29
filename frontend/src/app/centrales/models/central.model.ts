@@ -1,4 +1,4 @@
-export type Central = {
+export interface Central {
   central_id: number;
   nombre: string;
   ubicacion_estado: string;
@@ -9,3 +9,4 @@ export type Central = {
   combustible_principal?: string;
   combustible_secundario?: string;
 }
+
