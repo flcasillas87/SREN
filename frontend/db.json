@@ -1,0 +1,5 @@
+{
+  "centrales": [
+    { "central_id": 1, "nombre": "Central Hidro", "tipo_central": "Hidroeléctrica", "estado_operacion": "Operativa", "ubicacion_estado": "Nayarit" }
+  ]
+}

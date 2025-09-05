@@ -1,105 +1,77 @@
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
+import { computed, effect,Injectable, signal } from '@angular/core';
+
 import { MenuItem } from '../models/layout.model';
 
 @Injectable({ providedIn: 'root' })
 export class SidebarNavService {
-  // BehaviorSubject que mantiene la lista de elementos del menú
-  private menuItemsSubject = new BehaviorSubject<MenuItem[]>([
-    {
-      id: 1,
-      url: '/',
-      label: '',
-      name: 'Home',
-      href: '/home',
-      icon: 'home',
-      iconComponent: undefined,
-      title: '',
-      variant: '',
-      divider: false,
-    },
-    {
-      id: 2,
-      url: '/dashboard',
-      label: '',
-      name: 'Home',
-      href: '/home',
-      icon: 'home',
-      iconComponent: undefined,
-      title: '',
-      variant: '',
-      divider: false,
-    },
-    {
-      id: 3,
-      url: '/',
-      label: '',
-      name: 'Home',
-      href: '/home',
-      icon: 'home',
-      iconComponent: undefined,
-      title: '',
-      variant: '',
-      divider: false,
-    },
-    {
-      id: 4,
-      url: '/',
-      label: '',
-      name: 'Home',
-      href: '/home',
-      icon: 'home',
-      iconComponent: undefined,
-      title: '',
-      variant: '',
-      divider: false,
-    },
+  // 🔹 Señal privada que mantiene la lista completa de elementos del menú
+  private readonly _menuItems = signal<MenuItem[]>([
+    { id: 1, url: '/', label: '', name: 'Home', href: '/home', icon: 'home', iconComponent: undefined, title: '', variant: '', divider: false },
+    { id: 2, url: '/dashboard', label: '', name: 'Dashboard', href: '/dashboard', icon: 'home', iconComponent: undefined, title: '', variant: '', divider: false },
+    { id: 3, url: '/', label: '', name: 'Settings', href: '/settings', icon: 'home', iconComponent: undefined, title: '', variant: '', divider: false },
+    { id: 4, url: '/', label: '', name: 'Profile', href: '/profile', icon: 'home', iconComponent: undefined, title: '', variant: '', divider: false },
   ]);
 
-  // BehaviorSubject que mantiene la lista filtrada de elementos del menú
-  private filteredMenuItemsSubject = new BehaviorSubject<MenuItem[]>(
-    this.menuItemsSubject.value,
-  );
+  // 🔹 Señal privada para término de búsqueda
+  private readonly _searchTerm = signal<string>('');
 
-  // Observable que expone la lista de elementos del menú
-  menuItems$: Observable<MenuItem[]> = this.menuItemsSubject.asObservable();
+  // 🔹 Señal pública solo lectura: lista completa del menú
+  public readonly menuItems = this._menuItems.asReadonly();
 
-  // Observable que expone la lista filtrada de elementos del menú
-  filteredMenuItems$: Observable<MenuItem[]> =
-    this.filteredMenuItemsSubject.asObservable();
+  // 🔹 Señal pública solo lectura: término de búsqueda
+  public readonly searchTerm = this._searchTerm.asReadonly();
 
-  // Métodos para manipular los elementos de menú
-  addMenuItem(item: MenuItem): void {
-    const currentItems = this.menuItemsSubject.value;
-    this.menuItemsSubject.next([...currentItems, item]);
-    this.filteredMenuItemsSubject.next(this.menuItemsSubject.value); // Actualiza la lista filtrada
+  // 🔹 Computed: lista filtrada según el término de búsqueda
+  public readonly filteredMenuItems = computed(() => {
+    const term = this._searchTerm().toLowerCase();
+    if (!term) return this._menuItems();
+    return this._menuItems().filter(item =>
+      item.name.toLowerCase().includes(term)
+    );
+  });
+
+  // 🔹 Effect opcional: log cuando cambia la lista filtrada (para debug)
+  private readonly filteredEffect = effect(() => {
+    console.log('Menu filtrado actualizado:', this.filteredMenuItems());
+  });
+
+  // ==============================
+  // 🔹 Métodos públicos
+  // ==============================
+
+  /** Agrega un nuevo item al menú */
+  public addMenuItem(item: MenuItem): void {
+    const nextId = Math.max(...this._menuItems().map(i => i.id), 0) + 1;
+    this._menuItems.set([...this._menuItems(), { ...item, id: nextId }]);
   }
 
-  // Método para actualizar un elemento existente del menú
-  updateMenuItem(id: number, updatedItem: MenuItem): void {
-    const currentItems = this.menuItemsSubject.value;
-    const index = currentItems.findIndex((item) => item.id === id);
+  /** Actualiza un item existente */
+  public updateMenuItem(id: number, updatedItem: Partial<MenuItem>): void {
+    const current = [...this._menuItems()];
+    const index = current.findIndex(i => i.id === id);
     if (index !== -1) {
-      currentItems[index] = updatedItem;
-      this.menuItemsSubject.next([...currentItems]);
-      this.filteredMenuItemsSubject.next(this.menuItemsSubject.value); // Actualiza la lista filtrada
+      current[index] = { ...current[index], ...updatedItem };
+      this._menuItems.set(current);
     }
   }
 
-  // Método para eliminar un elemento del menú
-  deleteMenuItem(id: number): void {
-    const currentItems = this.menuItemsSubject.value.filter(
-      (item) => item.id !== id,
-    );
-    this.menuItemsSubject.next(currentItems);
-    this.filteredMenuItemsSubject.next(this.menuItemsSubject.value); // Actualiza la lista filtrada
+  /** Elimina un item por ID */
+  public deleteMenuItem(id: number): void {
+    this._menuItems.set(this._menuItems().filter(i => i.id !== id));
   }
 
-  // Método para buscar elementos del menú por término de búsqueda
-  searchMenuItems(searchTerm: string): void {
-    const filteredItems = this.menuItemsSubject.value.filter((item) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase()),
-    );
-    this.filteredMenuItemsSubject.next(filteredItems); // Actualiza los elementos filtrados
+  /** Actualiza el término de búsqueda */
+  public searchMenuItems(term: string): void {
+    this._searchTerm.set(term);
+  }
+
+  /** Reemplaza toda la lista del menú */
+  public setMenuItems(items: MenuItem[]): void {
+    this._menuItems.set([...items]);
+  }
+
+  /** Limpia el término de búsqueda */
+  public clearSearch(): void {
+    this._searchTerm.set('');
   }
 }

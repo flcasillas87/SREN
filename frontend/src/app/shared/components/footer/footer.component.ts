@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject,  } from '@angular/core';
-import { FooterContentService } from '../../../core/services/footer-content.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-
-
 import { RouterModule } from '@angular/router'; // Importando RouterModule
+
+import { FooterContentService } from '../../../core/services/footer-content.service';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,

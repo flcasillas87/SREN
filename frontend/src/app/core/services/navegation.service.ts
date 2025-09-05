@@ -1,114 +1,84 @@
-import { BehaviorSubject, Observable } from 'rxjs';
-import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { computed, effect,Injectable, signal } from '@angular/core';
+
 import { MenuItem } from '../models/layout.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MenuService {
-  // Lista de elementos del menú como un BehaviorSubject para permitir la suscripción a cambios
-  private readonly menuItemsSubject = new BehaviorSubject<MenuItem[]>([
-    {
-      id: 0,
-      url: 'admin',
-      label: 'Admin',
-      name: 'Admin',
-      href: '',
-      icon: 'home',
-      divider: true,
-    },
-    {
-      id: 1,
-      url: 'dashboard',
-      label: 'Dashboard',
-      name: 'Dashboard',
-      href: '',
-      icon: 'newspaper',
-      divider: true,
-    },
-    {
-      id: 2,
-      url: 'table',
-      label: 'Tablas',
-      name: 'Tablas',
-      href: '',
-      icon: 'monitoring',
-      divider: true,
-    },
-    {
-      id: 3,
-      url: 'card',
-      label: 'Card',
-      name: 'Card',
-      href: '',
-      icon: 'monitoring',
-      divider: true,
-    },
+  // 🔹 Señal privada para la lista de elementos del menú
+  private readonly _menuItems = signal<MenuItem[]>([
+    { id: 0, url: 'admin', label: 'Admin', name: 'Admin', href: '', icon: 'home', divider: true },
+    { id: 1, url: 'dashboard', label: 'Dashboard', name: 'Dashboard', href: '', icon: 'newspaper', divider: true },
+    { id: 2, url: 'table', label: 'Tablas', name: 'Tablas', href: '', icon: 'monitoring', divider: true },
+    { id: 3, url: 'card', label: 'Card', name: 'Card', href: '', icon: 'monitoring', divider: true },
   ]);
 
-  // Observable para exponer los elementos del menú
-  readonly menuItems$: Observable<MenuItem[]> =
-    this.menuItemsSubject.asObservable();
+  // 🔹 Señal privada para término de búsqueda
+  private readonly _searchTerm = signal<string>('');
 
-  getMenuItems(): Observable<MenuItem[]> {
-    return this.menuItems$;
-  }
+  // 🔹 Señales públicas solo lectura
+  public readonly menuItems = this._menuItems.asReadonly();
+  public readonly searchTerm = this._searchTerm.asReadonly();
 
-  addMenuItem(item: MenuItem): void {
-    const currentItems = this.menuItemsSubject.value;
-    this.menuItemsSubject.next([...currentItems, item]);
-    this.saveMenuItems();
-  }
-
-  updateMenuItem(id: string | number, updatedItem: MenuItem): void {
-    const updatedItems = this.menuItemsSubject.value.map((item) =>
-      item.id === id ? updatedItem : item
+  // 🔹 Computed para obtener la lista filtrada según searchTerm
+  public readonly filteredMenuItems = computed(() => {
+    const term = this._searchTerm().toLowerCase();
+    if (!term) return this._menuItems();
+    return this._menuItems().filter(item =>
+      item.name.toLowerCase().includes(term)
     );
-    this.menuItemsSubject.next(updatedItems);
-    this.saveMenuItems();
+  });
+
+  // 🔹 Effect opcional: guarda automáticamente en localStorage cuando cambian los items
+  private readonly saveEffect = effect(() => {
+    localStorage.setItem('menuItems', JSON.stringify(this._menuItems()));
+  });
+
+  constructor() {
+    // Carga inicial desde localStorage
+    this.loadMenuItems();
   }
 
-  deleteMenuItem(id: string | number): void {
-    const updatedItems = this.menuItemsSubject.value.filter(
-      (item) => item.id !== id
-    );
-    this.menuItemsSubject.next(updatedItems);
-    this.saveMenuItems();
+  // ==============================
+  // 🔹 Métodos públicos
+  // ==============================
+
+  public addMenuItem(item: MenuItem): void {
+    const nextId = Math.max(...this._menuItems().map(i => i.id), 0) + 1;
+    this._menuItems.set([...this._menuItems(), { ...item, id: nextId }]);
   }
 
-  saveMenuItems(): void {
-    localStorage.setItem(
-      'menuItems',
-      JSON.stringify(this.menuItemsSubject.value)
-    );
-  }
-
-  loadMenuItems(): void {
-    const savedItems = localStorage.getItem('menuItems');
-    if (savedItems) {
-      this.menuItemsSubject.next(JSON.parse(savedItems));
+  public updateMenuItem(id: number, updatedItem: Partial<MenuItem>): void {
+    const items = [...this._menuItems()];
+    const index = items.findIndex(i => i.id === id);
+    if (index !== -1) {
+      items[index] = { ...items[index], ...updatedItem };
+      this._menuItems.set(items);
     }
   }
 
-  filterMenuItems(
-    predicate: (item: MenuItem) => boolean
-  ): Observable<MenuItem[]> {
-    return this.menuItems$.pipe(map((items) => items.filter(predicate)));
+  public deleteMenuItem(id: number): void {
+    this._menuItems.set(this._menuItems().filter(i => i.id !== id));
   }
 
-  searchMenuItems(searchTerm: string): Observable<MenuItem[]> {
-    return this.menuItems$.pipe(
-      map((items) =>
-        items.filter((item) =>
-          item.name.toLowerCase().includes(searchTerm.toLowerCase())
-        )
-      )
-    );
+  public searchMenuItems(term: string): void {
+    this._searchTerm.set(term);
+  }
+
+  public setMenuItems(items: MenuItem[]): void {
+    this._menuItems.set([...items]);
+  }
+
+  public loadMenuItems(): void {
+    const saved = localStorage.getItem('menuItems');
+    if (saved) {
+      this._menuItems.set(JSON.parse(saved));
+    }
+  }
+
+  public clearMenu(): void {
+    this._menuItems.set([]);
+    this._searchTerm.set('');
   }
 }
-
-
-
-
-

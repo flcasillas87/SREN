@@ -9,7 +9,7 @@ import { RouterOutlet } from '@angular/router';
   imports: [RouterOutlet],
 })
 export class App {
-  title = 'SREN';
+  public title = 'SREN';
 
 
   

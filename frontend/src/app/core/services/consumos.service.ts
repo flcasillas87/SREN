@@ -1,5 +1,5 @@
-import { computed, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { computed, inject, signal } from '@angular/core';
 import { catchError, of, tap,   } from 'rxjs';
 
 export interface Consumption {

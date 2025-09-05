@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy,Component,  signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input,signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -10,13 +10,18 @@ import { RouterModule } from '@angular/router';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SideNavItemComponent {
-  // label y ruta como signals readonly
-  readonly label = signal('');
-  readonly route = signal('');
+  // 🔹 Señales privadas
+  private readonly _label = signal('');
+  private readonly _route = signal('');
 
-  // input signal para recibir datos del padre
-  set data(item: { label: string; route: string }) {
-    this.label.set(item.label);
-    this.route.set(item.route);
+  // 🔹 Señales públicas solo lectura para el template
+  public readonly label = this._label.asReadonly();
+  public readonly route = this._route.asReadonly();
+
+  /** Input para recibir datos del componente padre */
+  @Input()
+  public set data(item: { label: string; route: string }) {
+    this._label.set(item.label);
+    this._route.set(item.route);
   }
 }

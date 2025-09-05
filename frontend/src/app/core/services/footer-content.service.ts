@@ -1,4 +1,5 @@
-import { computed, Injectable, signal, Signal } from '@angular/core';
+import { computed, Injectable, Signal,signal } from '@angular/core';
+
 import { FooterContent } from '../models/layout.model';
 
 @Injectable({ providedIn: 'root' })

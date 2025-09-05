@@ -1,10 +1,6 @@
-import {
-  ChangeDetectionStrategy,
-  inject,
-  Component,
-  effect,
-} from '@angular/core';
-import { CentralesService } from './services/centrales.service';
+import { ChangeDetectionStrategy, Component, effect, inject, } from '@angular/core';
+
+import { CentralesService } from '../services/centrales.service';
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
