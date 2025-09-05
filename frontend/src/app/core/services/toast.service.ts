@@ -3,19 +3,27 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({ providedIn: 'root' })
 export class ToastService {
-  private snackBar = inject(MatSnackBar);
+  // 🔹 Inyección privada de MatSnackBar
+  private readonly _snackBar = inject(MatSnackBar);
 
-  success(message: string) {
-    this.snackBar.open(message, 'Cerrar', {
-      duration: 3000,
-      panelClass: ['toast-success']
+  // 🔹 Duración de notificaciones en ms
+  private readonly _successDurationMs = 3000;
+  private readonly _errorDurationMs = 4000;
+
+  /** Muestra un mensaje de éxito */
+  public success(message: string): void {
+    this._snackBar.open(message, 'Cerrar', {
+      duration: this._successDurationMs,
+      panelClass: ['toast-success'],
     });
   }
 
-  error(message: string) {
-    this.snackBar.open(message, 'Cerrar', {
-      duration: 4000,
-      panelClass: ['toast-error']
+  /** Muestra un mensaje de error */
+  public error(message: string): void {
+    this._snackBar.open(message, 'Cerrar', {
+      duration: this._errorDurationMs,
+      panelClass: ['toast-error'],
     });
   }
 }
+

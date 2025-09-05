@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 @Component({
   selector: 'app-centrales-detail',
   imports: [

@@ -1,18 +1,18 @@
-import { ChangeDetectionStrategy, Component,  output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 
 @Component({
-  selector: 'app-header-toggler', // coincide con el archivo y uso
+  selector: 'app-header-toggler', // ✅ coincide con archivo y uso
   standalone: true,
   templateUrl: './header-toggler.component.html',
   styleUrls: ['./header-toggler.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderTogglerComponent {
-  // Output como signal, readonly
-readonly sidebarToggle = output<void>();
+  /** Evento público para notificar el toggle del sidebar */
+  public readonly sidebarToggle = output<void>();
 
-  onSidebarToggle(): void {
-  this.sidebarToggle.emit();
+  /** Dispara el evento de toggle del sidebar */
+  public onSidebarToggle(): void {
+    this.sidebarToggle.emit();
   }
 }
-

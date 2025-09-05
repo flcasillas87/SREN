@@ -11,17 +11,17 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
   imports: [FooterComponent, HeaderComponent, SidebarComponent, RouterModule],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent {
-  // 🔹 Señal privada para controlar el sidebar
+  /** Signal privada para controlar el sidebar */
   private readonly _sidebarOpen = signal<boolean>(true);
 
-  // 🔹 Señal pública solo lectura para el template
-  readonly sidebarOpen = this._sidebarOpen.asReadonly();
+  /** Estado público y de solo lectura para el template */
+  public readonly isSidebarOpen = this._sidebarOpen.asReadonly();
 
   /** Alterna el estado del sidebar */
-  toggleSidebar(): void {
-    this._sidebarOpen.set(!this._sidebarOpen());
+  public toggleSidebar(): void {
+    this._sidebarOpen.update((open: boolean) => !open);
   }
 }
