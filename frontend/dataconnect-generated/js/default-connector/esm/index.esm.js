@@ -1,8 +1,7 @@
-import { , validateArgs } from 'firebase/data-connect';
+import { validateArgs } from 'firebase/data-connect';
 
 export const connectorConfig = {
   connector: 'default',
   service: 'sren',
-  location: 'us-central1'
+  location: 'us-central1',
 };
-

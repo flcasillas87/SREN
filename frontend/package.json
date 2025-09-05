@@ -8,9 +8,11 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
-    "lint": "ng lint",
-    "format": "prettier --write .",
-    "check-format": "prettier --check ."
+    "lint": "eslint \"src/**/*.{ts,html}\"",
+    "lint:fix": "eslint --fix \"src/**/*.{ts,html}\"",
+    "format": "prettier --write \"**/*.{ts,html,scss,json,md,css,js}\"",
+    "check-format": "prettier --check \"**/*.{ts,html,scss,json,md,css,js}\"",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@angular/animations": "^20.2.4",
@@ -33,11 +35,16 @@
     "firebase": "^12.2.1",
     "jquery": "^3.7.1",
     "rxjs": "^7.8.2",
-    "tslib": "^2.8.1",
-    "zone.js": "^0.15.1"
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^20.2.2",
+    "@angular-eslint/builder": "^20.2.0",
+    "@angular-eslint/eslint-plugin": "^20.2.0",
+    "@angular-eslint/eslint-plugin-template": "^20.2.0",
+    "@angular-eslint/schematics": "^20.2.0",
+    "@angular-eslint/template-parser": "^20.2.0",
+    "@angular-eslint/utils": "^20.2.0",
     "@angular/cli": "^20.2.2",
     "@angular/compiler-cli": "^20.2.4",
     "@types/jasmine": "^5.1.9",
@@ -49,16 +56,17 @@
     "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "eslint-plugin-unused-imports": "^4.2.0",
+    "husky": "^8.0.0",
     "jasmine-core": "^5.10.0",
     "karma": "^6.4.4",
     "karma-chrome-launcher": "^3.2.0",
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
+    "lint-staged": "^16.1.6",
     "msw": "^2.11.1",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
     "typescript-eslint": "^8.42.0",
-    "@angular-eslint/template-parser": "^20.2.0",
-    "@angular-eslint/utils": "^20.2.0"
+    "zone.js": "^0.15.1"
   }
 }
