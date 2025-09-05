@@ -8,8 +8,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConsumosFormComponent {
-  constructor() {
-    // Si en el futuro necesitas efectos con signals, usa effect() aquí
-    // actualmente no hay signals, así que este constructor puede estar vacío
-  }
+
 }

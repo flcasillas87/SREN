@@ -1,4 +1,4 @@
-import { computed, Injectable, Signal, signal } from '@angular/core';
+import { computed, effect, Injectable, Signal, signal } from '@angular/core';
 
 import { FooterContent, FooterLink } from '../models/layout.model';
 
@@ -19,23 +19,30 @@ export class FooterContentService {
   });
 
   // ==============================
-  // 2️⃣ Señales públicas readonly
+  // 2️⃣ Effects privados (opcional)
+  // ==============================
+  private readonly _saveEffect = effect(() => {
+    localStorage.setItem('footerContent', JSON.stringify(this._footerContent()));
+  });
+
+  // ==============================
+  // 3️⃣ Señales públicas readonly
   // ==============================
   public readonly footerContent: Signal<FooterContent> = this._footerContent.asReadonly();
 
   public readonly totalLinks: Signal<number> = computed(
-    () => this._footerContent().links.length,
+    () => this._footerContent().links.length
   );
 
   public readonly linkTitles: Signal<string[]> = computed(
     () =>
       this._footerContent()
         .links.map(link => link.title)
-        .filter((title): title is string => !!title),
+        .filter((title): title is string => !!title)
   );
 
   // ==============================
-  // 3️⃣ Métodos de actualización
+  // 4️⃣ Métodos de actualización
   // ==============================
   public updateContactInfo(info: string): void {
     this._footerContent.update(current => ({ ...current, contactInfo: info }));
@@ -50,7 +57,7 @@ export class FooterContentService {
   }
 
   // ==============================
-  // 4️⃣ Métodos para manipular links individualmente
+  // 5️⃣ Manipulación individual de links
   // ==============================
   public addLink(link: FooterLink): void {
     this._footerContent.update(current => ({ ...current, links: [...current.links, link] }));
@@ -67,16 +74,15 @@ export class FooterContentService {
     this._footerContent.update(current => ({
       ...current,
       links: current.links.map(link =>
-        link.title === oldTitle ? { ...link, ...updatedLink } : link,
+        link.title === oldTitle ? { ...link, ...updatedLink } : link
       ),
     }));
   }
 
   // ==============================
-  // 5️⃣ Métodos de utilidad
+  // 6️⃣ Métodos de utilidad
   // ==============================
   public getLinkByTitle(title: string): FooterLink | undefined {
     return this._footerContent().links.find(link => link.title === title);
   }
 }
-

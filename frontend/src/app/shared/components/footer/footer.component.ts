@@ -5,7 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 
-import { FooterContentService } from '../../../core/services/footer-content.service';
+import { FooterContent,FooterContentService } from '../../../core/services/footer-content.service';
 
 @Component({
   selector: 'app-footer',
@@ -22,14 +22,15 @@ import { FooterContentService } from '../../../core/services/footer-content.serv
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FooterComponent {
-  /** Servicio privado inyectado para obtener contenido del footer */
+  // Privados
   private readonly _footerContentService = inject(FooterContentService);
 
-  /** Signal reactiva que almacena el contenido del footer */
-  public readonly footerContent = signal<string>(this._footerContentService.footerContent());
-
-  /** Efecto que actualiza la señal automáticamente */
   private readonly _footerEffect = effect(() => {
     this.footerContent.set(this._footerContentService.footerContent());
   });
+
+  // Públicos
+  public readonly footerContent = signal<FooterContent>(
+    this._footerContentService.footerContent()
+  );
 }

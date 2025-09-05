@@ -1,7 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed,signal } from '@angular/core';
-
-import { SidebarHeaderComponent } from './sidebar-header/sidebar-header.component';
-import { SidebarNavComponent } from './sidebar-nav/sidebar-nav.component';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 
 export interface NavItem {
   label: string;
@@ -11,17 +8,16 @@ export interface NavItem {
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [SidebarHeaderComponent, SidebarNavComponent],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent {
   // 🔹 Señal privada de los items de navegación
   private readonly _navItems = signal<NavItem[]>([
     { label: 'Dashboard', route: '/' },
     { label: 'Usuarios', route: '/usuarios' },
-    { label: 'Ajustes', route: '/ajustes' }
+    { label: 'Ajustes', route: '/ajustes' },
   ]);
 
   // 🔹 Señal privada del título
@@ -31,11 +27,11 @@ export class SidebarComponent {
   public readonly navItems = this._navItems.asReadonly();
   public readonly title = this._title.asReadonly();
 
-  // 🔹 Computed ejemplo: número de items
+  // 🔹 Computed: número de items
   public readonly navCount = computed(() => this._navItems().length);
 
   // ==============================
-  // 🔹 Métodos públicos para modificar señales
+  // 🔹 Métodos públicos
   // ==============================
 
   /** Actualiza el título */
@@ -53,7 +49,7 @@ export class SidebarComponent {
     this._navItems.set([...this._navItems(), item]);
   }
 
-  /** Elimina un item por label o route */
+  /** Elimina un item por route */
   public removeNavItem(route: string): void {
     this._navItems.set(this._navItems().filter(i => i.route !== route));
   }

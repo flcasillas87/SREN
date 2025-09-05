@@ -1,27 +1,21 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy,Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { FooterComponent } from '../footer/footer.component';
-import { HeaderComponent } from '../header/header.component';
-import { SidebarComponent } from '../sidebar/sidebar.component';
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [FooterComponent, HeaderComponent, SidebarComponent, RouterModule],
+  imports: [
+    HeaderComponent, // ✅ debe ser standalone
+    SidebarComponent, // ✅ debe ser standalone
+    FooterComponent, // ✅ debe ser standalone
+    RouterModule // ✅ NgModule
+  ],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LayoutComponent {
-  /** Signal privada para controlar el sidebar */
-  private readonly _sidebarOpen = signal<boolean>(true);
-
-  /** Estado público y de solo lectura para el template */
-  public readonly isSidebarOpen = this._sidebarOpen.asReadonly();
-
-  /** Alterna el estado del sidebar */
-  public toggleSidebar(): void {
-    this._sidebarOpen.update((open: boolean) => !open);
-  }
-}
+export class LayoutComponent {}

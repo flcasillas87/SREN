@@ -15,7 +15,11 @@ export interface Link {
     divider?: boolean;
   }[];
 };
-
+export interface FooterLink {
+  title: string;
+  url: string;
+  icon?: string;
+}
 // Interfaz para el contenido del footer
 export interface FooterContent  {
   contactInfo: string;

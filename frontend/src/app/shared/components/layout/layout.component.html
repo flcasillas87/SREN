@@ -1,7 +1,6 @@
-<app-header />
+<app-header (toggleSidebar)="toggleSidebar()"></app-header>
 
 <div class="main-container">
-  <!-- Usar la nueva sintaxis @if -->
   @if (sidebarOpen()) {
     <app-sidebar />
   }
