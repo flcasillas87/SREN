@@ -7,7 +7,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-
 /**
  * Centraliza los módulos de Angular Material y las animaciones para su uso global.
  * Agrega o elimina módulos de Material aquí para mantener la consistencia en toda la app.
@@ -20,5 +19,5 @@ export const provideMaterialModules = () =>
     MatIconModule,
     MatToolbarModule,
     MatSidenavModule,
-    MatListModule
+    MatListModule,
   );

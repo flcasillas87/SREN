@@ -13,4 +13,3 @@ export class HeaderLogoComponent {
   /** Input como Signal, readonly y público para ESLint */
   public readonly logoSrc: Signal<string> = input<string>('assets/logo.png');
 }
-

@@ -51,6 +51,6 @@ export class SidebarComponent {
 
   /** Elimina un item por route */
   public removeNavItem(route: string): void {
-    this._navItems.set(this._navItems().filter(i => i.route !== route));
+    this._navItems.set(this._navItems().filter((i) => i.route !== route));
   }
 }

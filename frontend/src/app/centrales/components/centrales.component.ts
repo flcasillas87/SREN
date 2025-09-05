@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 
-import {CentralesService } from '../services/centrales.service';
+import { CentralesService } from '../services/centrales.service';
 
 @Component({
   selector: 'app-centrales',
@@ -12,8 +12,7 @@ import {CentralesService } from '../services/centrales.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CentralesComponent {
-  
-    // 🔹 Effect de inicialización
+  // 🔹 Effect de inicialización
   private readonly _initEffect = effect(() => {
     this._centralesService.loadCentrales();
   });
@@ -25,7 +24,4 @@ export class CentralesComponent {
   public readonly centrales = this._centralesService.centrales;
   public readonly loading = this._centralesService.loading;
   public readonly error = this._centralesService.error;
-
-
 }
-

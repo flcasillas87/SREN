@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component,  } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { HeaderBrandComponent } from '../header/header-brand/header-brand.component';
 import { HeaderDividerComponent } from '../header/header-divider/header-divider.component';
@@ -11,19 +11,17 @@ import { HeaderTogglerComponent } from '../header/header-toggler/header-toggler.
 @Component({
   selector: 'app-header',
   standalone: true,
-    imports: [
+  imports: [
     HeaderBrandComponent,
     HeaderLogoComponent,
     HeaderNavComponent,
     HeaderTextComponent,
     HeaderDividerComponent,
     HeaderSearchComponent,
-    HeaderTogglerComponent
+    HeaderTogglerComponent,
   ],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HeaderComponent {
-
-}
+export class HeaderComponent {}

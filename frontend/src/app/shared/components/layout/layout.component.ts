@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy,Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { FooterComponent } from './footer/footer.component';
@@ -12,10 +12,10 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     HeaderComponent, // ✅ debe ser standalone
     SidebarComponent, // ✅ debe ser standalone
     FooterComponent, // ✅ debe ser standalone
-    RouterModule // ✅ NgModule
+    RouterModule, // ✅ NgModule
   ],
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LayoutComponent {}

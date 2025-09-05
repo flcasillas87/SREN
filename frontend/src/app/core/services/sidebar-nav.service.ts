@@ -8,10 +8,54 @@ export class SidebarNavService {
   // 🔹 Señales privadas
   // ==============================
   private readonly _menuItems = signal<MenuItem[]>([
-    { id: 1, url: '/', label: '', name: 'Home', href: '/home', icon: 'home', iconComponent: undefined, title: '', variant: '', divider: false },
-    { id: 2, url: '/dashboard', label: '', name: 'Dashboard', href: '/dashboard', icon: 'home', iconComponent: undefined, title: '', variant: '', divider: false },
-    { id: 3, url: '/', label: '', name: 'Settings', href: '/settings', icon: 'home', iconComponent: undefined, title: '', variant: '', divider: false },
-    { id: 4, url: '/', label: '', name: 'Profile', href: '/profile', icon: 'home', iconComponent: undefined, title: '', variant: '', divider: false },
+    {
+      id: 1,
+      url: '/',
+      label: '',
+      name: 'Home',
+      href: '/home',
+      icon: 'home',
+      iconComponent: undefined,
+      title: '',
+      variant: '',
+      divider: false,
+    },
+    {
+      id: 2,
+      url: '/dashboard',
+      label: '',
+      name: 'Dashboard',
+      href: '/dashboard',
+      icon: 'home',
+      iconComponent: undefined,
+      title: '',
+      variant: '',
+      divider: false,
+    },
+    {
+      id: 3,
+      url: '/',
+      label: '',
+      name: 'Settings',
+      href: '/settings',
+      icon: 'home',
+      iconComponent: undefined,
+      title: '',
+      variant: '',
+      divider: false,
+    },
+    {
+      id: 4,
+      url: '/',
+      label: '',
+      name: 'Profile',
+      href: '/profile',
+      icon: 'home',
+      iconComponent: undefined,
+      title: '',
+      variant: '',
+      divider: false,
+    },
   ]);
 
   private readonly _searchTerm = signal<string>('');
@@ -22,9 +66,7 @@ export class SidebarNavService {
   private readonly _filteredMenuItems = computed(() => {
     const term = this._searchTerm().toLowerCase();
     if (!term) return this._menuItems();
-    return this._menuItems().filter(item =>
-      item.name.toLowerCase().includes(term)
-    );
+    return this._menuItems().filter((item) => item.name.toLowerCase().includes(term));
   });
 
   private readonly _logEffect = effect(() => {
@@ -42,13 +84,13 @@ export class SidebarNavService {
   // 🔹 Métodos públicos
   // ==============================
   public addMenuItem(item: MenuItem): void {
-    const nextId = Math.max(...this._menuItems().map(i => i.id), 0) + 1;
+    const nextId = Math.max(...this._menuItems().map((i) => i.id), 0) + 1;
     this._menuItems.set([...this._menuItems(), { ...item, id: nextId }]);
   }
 
   public updateMenuItem(id: number, updatedItem: Partial<MenuItem>): void {
     const current = [...this._menuItems()];
-    const index = current.findIndex(i => i.id === id);
+    const index = current.findIndex((i) => i.id === id);
     if (index !== -1) {
       current[index] = { ...current[index], ...updatedItem };
       this._menuItems.set(current);
@@ -56,7 +98,7 @@ export class SidebarNavService {
   }
 
   public deleteMenuItem(id: number): void {
-    this._menuItems.set(this._menuItems().filter(i => i.id !== id));
+    this._menuItems.set(this._menuItems().filter((i) => i.id !== id));
   }
 
   public searchMenuItems(term: string): void {

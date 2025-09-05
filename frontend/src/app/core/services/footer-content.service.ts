@@ -30,52 +30,53 @@ export class FooterContentService {
   // ==============================
   public readonly footerContent: Signal<FooterContent> = this._footerContent.asReadonly();
 
-  public readonly totalLinks: Signal<number> = computed(
-    () => this._footerContent().links.length
-  );
+  public readonly totalLinks: Signal<number> = computed(() => this._footerContent().links.length);
 
-  public readonly linkTitles: Signal<string[]> = computed(
-    () =>
-      this._footerContent()
-        .links.map(link => link.title)
-        .filter((title): title is string => !!title)
+  public readonly linkTitles: Signal<string[]> = computed(() =>
+    this._footerContent()
+      .links.map((link) => link.title)
+      .filter((title): title is string => !!title),
   );
 
   // ==============================
   // 4️⃣ Métodos de actualización
   // ==============================
   public updateContactInfo(info: string): void {
-    this._footerContent.update(current => ({ ...current, contactInfo: info }));
+    this._footerContent.update((current) => ({
+      ...current,
+      contactInfo: info,
+    }));
   }
 
   public updateLinks(links: FooterLink[]): void {
-    this._footerContent.update(current => ({ ...current, links }));
+    this._footerContent.update((current) => ({ ...current, links }));
   }
 
   public updateCopyright(copyright: string): void {
-    this._footerContent.update(current => ({ ...current, copyright }));
+    this._footerContent.update((current) => ({ ...current, copyright }));
   }
 
   // ==============================
   // 5️⃣ Manipulación individual de links
   // ==============================
   public addLink(link: FooterLink): void {
-    this._footerContent.update(current => ({ ...current, links: [...current.links, link] }));
+    this._footerContent.update((current) => ({
+      ...current,
+      links: [...current.links, link],
+    }));
   }
 
   public removeLink(title: string): void {
-    this._footerContent.update(current => ({
+    this._footerContent.update((current) => ({
       ...current,
-      links: current.links.filter(link => link.title !== title),
+      links: current.links.filter((link) => link.title !== title),
     }));
   }
 
   public updateLink(oldTitle: string, updatedLink: Partial<FooterLink>): void {
-    this._footerContent.update(current => ({
+    this._footerContent.update((current) => ({
       ...current,
-      links: current.links.map(link =>
-        link.title === oldTitle ? { ...link, ...updatedLink } : link
-      ),
+      links: current.links.map((link) => (link.title === oldTitle ? { ...link, ...updatedLink } : link)),
     }));
   }
 
@@ -83,6 +84,6 @@ export class FooterContentService {
   // 6️⃣ Métodos de utilidad
   // ==============================
   public getLinkByTitle(title: string): FooterLink | undefined {
-    return this._footerContent().links.find(link => link.title === title);
+    return this._footerContent().links.find((link) => link.title === title);
   }
 }

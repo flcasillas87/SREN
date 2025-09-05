@@ -3,10 +3,29 @@
 <ul>
   @for (const central of centrales()) {
     <li>
-      <strong>@{central.nombre}</strong>
-      <div>📍 @{central.ubicacionEstado}</div>
-      <div>⚡ @{central.tipoCentral}</div>
-      <div>🔧 @{central.estadoOperacion}</div>
+      <strong>
+        @ {
+          central.nombre
+        }
+      </strong>
+      <div>
+        📍
+        @ {
+          central.ubicacionEstado
+        }
+      </div>
+      <div>
+        ⚡
+        @ {
+          central.tipoCentral
+        }
+      </div>
+      <div>
+        🔧
+        @ {
+          central.estadoOperacion
+        }
+      </div>
     </li>
   }
 </ul>

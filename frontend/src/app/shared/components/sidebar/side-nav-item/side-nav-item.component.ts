@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input,signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule],
   templateUrl: './side-nav-item.component.html',
   styleUrls: ['./side-nav-item.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SideNavItemComponent {
   // 🔹 Señales privadas

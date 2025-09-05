@@ -7,6 +7,4 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./consumos-form.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ConsumosFormComponent {
-
-}
+export class ConsumosFormComponent {}

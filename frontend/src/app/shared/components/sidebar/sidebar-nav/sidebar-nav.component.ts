@@ -10,7 +10,12 @@ import { ChangeDetectionStrategy, Component, Input, signal } from '@angular/core
 })
 export class SidebarNavComponent {
   // 🔹 Señal privada para los datos del item
-  private readonly _data = signal<{ id: number; name: string; link: string; icon?: string } | null>(null);
+  private readonly _data = signal<{
+    id: number;
+    name: string;
+    link: string;
+    icon?: string;
+  } | null>(null);
 
   // 🔹 Señal pública solo lectura para el template
   public readonly data = this._data.asReadonly();
@@ -21,4 +26,3 @@ export class SidebarNavComponent {
     this._data.set(value);
   }
 }
-

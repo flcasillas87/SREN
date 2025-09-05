@@ -5,7 +5,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
   standalone: true,
   templateUrl: './sidebar-header.component.html',
   styleUrls: ['./sidebar-header.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarHeaderComponent {
   // Signal privada

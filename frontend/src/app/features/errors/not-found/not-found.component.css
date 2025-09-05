@@ -1,18 +1,17 @@
 .not-found-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .not-found-card {
-    text-align: center;
-    padding: 2rem;
-    max-width: 600px;
+  text-align: center;
+  padding: 2rem;
+  max-width: 600px;
 }
 
 .not-found-icon {
-    font-size: 4rem;
-    margin-bottom: 1rem;
+  font-size: 4rem;
+  margin-bottom: 1rem;
 }

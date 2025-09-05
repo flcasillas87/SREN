@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, Signal,signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Signal, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -19,8 +19,6 @@ export class NotFoundComponent {
   // 🔹 Mensajes dinámicos como signals
   public readonly title: Signal<string> = signal('Error 404 - Página no encontrada');
   public readonly description: Signal<string> = signal('La página que buscas no existe o ha sido eliminada.');
-
-
 
   // 🔹 Método para redirigir a home
   public goHome(): void {

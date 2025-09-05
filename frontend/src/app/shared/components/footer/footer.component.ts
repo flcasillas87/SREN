@@ -5,18 +5,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { RouterModule } from '@angular/router';
 
-import { FooterContent,FooterContentService } from '../../../core/services/footer-content.service';
+import { FooterContent, FooterContentService } from '../../../core/services/footer-content.service';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [
-    MatCardModule,
-    MatDividerModule,
-    MatIconModule,
-    MatListModule,
-    RouterModule,
-  ],
+  imports: [MatCardModule, MatDividerModule, MatIconModule, MatListModule, RouterModule],
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -30,7 +24,5 @@ export class FooterComponent {
   });
 
   // Públicos
-  public readonly footerContent = signal<FooterContent>(
-    this._footerContentService.footerContent()
-  );
+  public readonly footerContent = signal<FooterContent>(this._footerContentService.footerContent());
 }

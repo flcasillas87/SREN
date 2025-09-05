@@ -1,4 +1,4 @@
-import { computed, effect, Injectable, Signal,signal } from '@angular/core';
+import { computed, effect, Injectable, Signal, signal } from '@angular/core';
 
 export interface Central {
   centralId: number;
@@ -15,7 +15,7 @@ export class CentralesService {
   private readonly _loading = signal(false);
   private readonly _error = signal<string | null>(null);
 
-    // 🔹 Effect de logging
+  // 🔹 Effect de logging
   private readonly _logEffect = effect(() => {
     console.log('Centrales actualizadas:', this._centrales());
   });
@@ -27,8 +27,6 @@ export class CentralesService {
 
   // 🔹 Computed: totales
   public readonly totalCentrales = computed(() => this._centrales().length);
-
-
 
   // =====================
   // Métodos públicos

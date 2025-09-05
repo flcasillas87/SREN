@@ -1,33 +1,51 @@
 import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
-import angular from 'angular-eslint';
-import eslintConfigPrettier from 'eslint-config-prettier';
+import tsEslint from 'typescript-eslint';
+import angularEslint from 'angular-eslint';
+import prettierConfig from 'eslint-config-prettier';
 import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 import importPlugin from 'eslint-plugin-import';
 
-export default tseslint.config(
+/**
+ * Configuración ESLint para Angular 20 + TypeScript
+ * - Incluye soporte Prettier
+ * - Orden de imports
+ * - Reglas de estilo TS
+ * - Reglas Angular para templates y accesibilidad
+ */
+export default tsEslint.config(
   {
-    ignores: ['.angular/**', '.nx/**', 'coverage/**', 'dist/**'],
+    // Archivos TS a validar
     files: ['**/*.ts'],
-    extends: [
-      eslint.configs.recommended,       // Reglas recomendadas ESLint
-      ...tseslint.configs.recommended,  // Reglas recomendadas TS
-      ...tseslint.configs.stylistic,    // Estilo de código TS
-      ...angular.configs.tsRecommended, // Reglas recomendadas Angular TS
-      eslintConfigPrettier,             // Compatibilidad con Prettier
-    ],
-    processor: angular.processInlineTemplates,
-    plugins: {
-      'simple-import-sort': simpleImportSort, // Orden de imports
-      'unused-imports': unusedImports,        // Detecta imports no usados
-      'import': importPlugin,                  // Reglas adicionales de imports
-    },
-    rules: {
-      // 🔹 Tipado estricto
-      //'@typescript-eslint/no-explicit-any': 'error', 
 
-      // 🔹 Nombres y accesibilidad
+    // Archivos/carpetas a ignorar
+    ignores: ['.angular/**', '.nx/**', 'coverage/**', 'dist/**'],
+
+    // Configs base
+    extends: [
+      eslint.configs.recommended, // Reglas ESLint base
+      ...tsEslint.configs.recommended, // Reglas TypeScript recomendadas
+      ...tsEslint.configs.stylistic, // Estilo TypeScript
+      ...angularEslint.configs.tsRecommended, // Angular TS recomendado
+      prettierConfig, // Compatibilidad Prettier
+    ],
+
+    // Procesador para templates inline en Angular
+    processor: angularEslint.processInlineTemplates,
+
+    // Plugins adicionales
+    plugins: {
+      'simple-import-sort': simpleImportSort,
+      'unused-imports': unusedImports,
+      import: importPlugin,
+    },
+
+    // Reglas específicas
+    rules: {
+      // Tipado estricto (descomentar si quieres prohibir any)
+      // '@typescript-eslint/no-explicit-any': 'error',
+
+      // Nombres y accesibilidad
       '@typescript-eslint/naming-convention': [
         'error',
         {
@@ -47,43 +65,39 @@ export default tseslint.config(
         { accessibility: 'explicit' }, // Todos los miembros deben declarar public/private
       ],
 
-      // 🔹 Orden de miembros
+      // Orden de miembros en clases
       '@typescript-eslint/member-ordering': [
         'error',
         {
-          default: [
-            'private-field',
-            'public-field',
-            'constructor',
-            'private-method',
-            'public-method',
-          ],
+          default: ['private-field', 'public-field', 'constructor', 'private-method', 'public-method'],
         },
       ],
 
-      // 🔹 Angular OnPush
+      // Angular OnPush
       '@angular-eslint/prefer-on-push-component-change-detection': 'error',
 
-      // 🔹 Orden de imports
+      // Orden de imports
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
 
-      // 🔹 Import plugin
-      'import/no-duplicates': 'error',       // Evita duplicados
-      'import/newline-after-import': 'error',// Línea en blanco tras imports
+      // Import plugin
+      'import/no-duplicates': 'error',
+      'import/newline-after-import': 'error',
 
-      // 🔹 Unused imports
-      'unused-imports/no-unused-imports': 'error', 
+      // Unused imports
+      'unused-imports/no-unused-imports': 'error',
     },
   },
+
+  // Configuración para HTML / templates Angular
   {
     files: ['**/*.html'],
     extends: [
-      ...angular.configs.templateRecommended,     // Reglas Angular templates
-      ...angular.configs.templateAccessibility,  // Reglas de accesibilidad
+      ...angularEslint.configs.templateRecommended, // Reglas templates Angular
+      ...angularEslint.configs.templateAccessibility, // Accesibilidad
     ],
     rules: {
-      // Aquí se pueden agregar reglas específicas de templates
+      // Reglas específicas de templates opcionales
     },
   },
 );
