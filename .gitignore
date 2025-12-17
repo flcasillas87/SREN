@@ -4,6 +4,7 @@
 node_modules/
 .angular/
 dist/
+/dist/
 /out-tsc/
 /bazel-out/
 
@@ -17,8 +18,8 @@ dist/
 # ===============================================
 # Ignorar configuraciones locales de la CLI
 .supabase/
-
-# NUNCA subas archivos que contengan contraseñas reales
+/backups/
+/.env
 .env
 .env.local
 .env.*.local

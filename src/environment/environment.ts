@@ -28,4 +28,7 @@ export const environment = {
   },
 
   customApiKey: 'YOUR_CUSTOM_API_KEY',
+
+  supabaseUrl: 'https://xxxxx.supabase.co',
+  supabaseAnonKey: 'public-anon-key'
 };
