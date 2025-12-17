@@ -1,0 +1,18 @@
+.general-styles {
+  background-color: black;
+  color: white;
+}
+
+.sidenav-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidenav {
+  width: 250px;
+}
+
+mat-sidenav-content {
+  flex-grow: 1;
+  padding: 20px;
+}

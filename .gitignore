@@ -1,0 +1,58 @@
+# ===============================================
+# 1. ANGULAR & NODE (Lo más pesado)
+# ===============================================
+node_modules/
+.angular/
+dist/
+/out-tsc/
+/bazel-out/
+
+# Carpeta de compilación de Angular
+.cache/
+.npm
+.eslintcache
+
+# ===============================================
+# 2. SUPABASE & DATABASE (Seguridad)
+# ===============================================
+# Ignorar configuraciones locales de la CLI
+.supabase/
+
+# NUNCA subas archivos que contengan contraseñas reales
+.env
+.env.local
+.env.*.local
+
+# Archivos de volcado de base de datos pesados (Backups)
+# Si quieres guardar tus backups en Git, crea una carpeta específica 
+# y asegúrate de que no pesen más de 100MB.
+*.sql.bak
+dump.sql
+
+# ===============================================
+# 3. IDEs & SISTEMA (Basura visual)
+# ===============================================
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# System Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===============================================
+# 4. LOGS & TEMPORALES
+# ===============================================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+tmp/
+temp/

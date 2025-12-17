@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "ES2024", // 📌 Versión de JavaScript que generará (Node 18+ soporta ES2022)
+    "module": "ESNext", // 📌 Usa módulos ESM compatibles con Node (import/export)
+    "moduleResolution": "Node", // 📌 Cómo se resuelven los imports en proyectos ESM
+    "outDir": "./dist", // 📌 Carpeta donde se guardarán los .js compilados
+    "rootDir": "./src", // 📌 Carpeta raíz donde está el código fuente TypeScript
+    "esModuleInterop": true, // 📌 Permite importar módulos CommonJS como si fueran ESM (ej: import express)
+    "strict": true, // 📌 Activa todas las comprobaciones estrictas de TypeScript
+    "skipLibCheck": true, // 📌 No revisa los tipos internos de las librerías (mejora velocidad)
+    "resolveJsonModule": true, // 📌 Permite importar archivos .json como módulos
+    "forceConsistentCasingInFileNames": true // 📌 Obliga a usar el mismo casing en nombres de archivos
+  },
+  "include": ["src"], // 📌 Archivos TypeScript que se deben compilar
+  "exclude": [
+    "node_modules", // 📌 Ignora la carpeta node_modules en la compilación
+    "**/*.spec.ts" // 📌 Excluye archivos de prueba.
+  ]
+}
