@@ -6,7 +6,7 @@ import  {MatDividerModule} from '@angular/material/divider';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule} from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@services/auth.service';
 
 interface LogInForm {
@@ -23,6 +23,7 @@ interface LogInForm {
     MatInputModule,
     MatIconModule,
     MatDividerModule,
+    RouterLink,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

@@ -1,0 +1,65 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+// -----------------------------
+// 1. Definir variables CSS con tus colores exactos
+// -----------------------------
+:root {
+  /* Primary (verde) */
+  --md-ref-palette-primary-50: #e0f1eb;
+  --md-ref-palette-primary-100: #b3ddce;
+  --md-ref-palette-primary-200: #80c7ad;
+  --md-ref-palette-primary-300: #4db08c;
+  --md-ref-palette-primary-400: #269f73;
+  --md-ref-palette-primary-500: #008e5a;
+  --md-ref-palette-primary-600: #008652;
+  --md-ref-palette-primary-700: #007b48;
+  --md-ref-palette-primary-800: #00713f;
+  --md-ref-palette-primary-900: #005f2e;
+
+  /* Tertiary (naranja) */
+  --md-ref-palette-tertiary-50: #fcf2e7;
+  --md-ref-palette-tertiary-100: #f8dec3;
+  --md-ref-palette-tertiary-200: #f3c89c;
+  --md-ref-palette-tertiary-300: #eeb274;
+  --md-ref-palette-tertiary-400: #eaa256;
+  --md-ref-palette-tertiary-500: #e69138;
+  --md-ref-palette-tertiary-600: #e38932;
+  --md-ref-palette-tertiary-700: #df7e2b;
+  --md-ref-palette-tertiary-800: #db7424;
+  --md-ref-palette-tertiary-900: #d56217;
+
+  /* Error (amarillo) */
+  --md-ref-palette-error-50: #fffaed;
+  --md-ref-palette-error-100: #fff4d1;
+  --md-ref-palette-error-200: #ffecb3;
+  --md-ref-palette-error-500: #ffd966;
+  --md-ref-palette-error-900: #ffc038;
+}
+
+// -----------------------------
+// 2. Crear theme Angular Material
+// -----------------------------
+$my-theme: mat.define-theme((
+  color: (
+    theme-type: light,
+    primary: mat.$green-palette,    // referencia, usa tus variables CSS
+    tertiary: mat.$orange-palette,  // referencia, usa tus variables CSS
+    use-system-variables: true
+  ),
+  typography: (
+    brand-family: 'Roboto, sans-serif',
+    plain-family: 'Roboto, sans-serif'
+  ),
+  density: (
+    scale: 0
+  )
+));
+
+// -----------------------------
+// 3. Aplicar theme a todos los componentes
+// -----------------------------
+@include mat.all-component-themes($my-theme);
+
+
