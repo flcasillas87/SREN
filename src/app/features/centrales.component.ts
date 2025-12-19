@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 
-import { CentralesService } from '../services/centrales.service';
+import { CentralesService } from '../core/services/centrales.service';
 
 @Component({
   selector: 'app-centrales',

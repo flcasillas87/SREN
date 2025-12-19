@@ -1,8 +1,13 @@
 export const environment = {
   production: false,
-  // Si usas la CLI local:
-  supabaseUrl: 'http://localhost:54321', 
-  // Si usas Portainer (pon la IP de esa máquina):
-  // supabaseUrl: 'http://192.168.1.50:8000', 
-  supabaseKey: 'TU_ANON_KEY_LOCAL'
+  // URL de la API
+  apiUrl: 'http://localhost:4200',
+  // Clave de la API
+  apiKey: 'YOUR_API_KEY',
+  socketUrl: 'ws://localhost:4200',
+
+  //supabase
+  supabaseUrl: 'https://elgkygijhfvjdirrdwzr.supabase.co',
+  supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsZ2t5Z2lqaGZ2amRpcnJkd3pyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcyMjAzMDgsImV4cCI6MjA3Mjc5NjMwOH0.Mv2mx_57G6cGoXpzOyt3lavukuABlHiZTftlzzDiLwA'
+
 };

@@ -10,7 +10,10 @@
     "baseUrl": "./",
     "paths": {
       "@core/*": ["src/app/core/*"],
+      "@services/*": ["src/app/core/services/*"],
+      "@guards/*": ["src/app/core/guards/*"],
       "@shared/*": ["src/app/shared/*"],
+      "@auth/*": ["src/app/auth/*"],
       "@env/*": ["src/environment/*"]
     },
 

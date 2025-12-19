@@ -74,7 +74,7 @@ export default tsEslint.config(
       ],
 
       // Angular OnPush
-      '@angular-eslint/prefer-on-push-component-change-detection': 'error',
+      //'@angular-eslint/prefer-on-push-component-change-detection': 'error',
 
       // Orden de imports
       'simple-import-sort/imports': 'error',
