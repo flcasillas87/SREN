@@ -1,11 +1,63 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { FormBuilder,  FormControl,  ReactiveFormsModule,  Validators} from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import  {MatDividerModule} from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule} from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
+import { AuthService } from '@services/auth.service';
 
+interface LogInForm {
+  email: FormControl<null | string>;
+  password: FormControl<null | string>;
+}
 @Component({
   selector: 'app-log-in',
-  imports: [],
+  imports: [
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatDividerModule,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export default class AuthLogIn {
 
+export default class LoginComponent {
+  private _formBuilder = inject(FormBuilder);
+  private _authService = inject(AuthService);
+  private _router = inject(Router);
+
+  public logInForm = this._formBuilder.nonNullable.group<LogInForm>({
+    email: this._formBuilder.control(null, [
+      Validators.required,
+      Validators.email,
+    ]),
+    password: this._formBuilder.control(null, [Validators.required]),
+  });
+
+  public async submit() {
+    if (this.logInForm.invalid) return;
+
+    try {
+      const { error } = await this._authService.logIn({
+        email: this.logInForm.value.email ?? '',
+        password: this.logInForm.value.password ?? '',
+      });
+
+      if (error) throw error;
+
+      this._router.navigateByUrl('/');
+    } catch (error) {
+      if (error instanceof Error) {
+        console.log(error);
+      }
+    }
+  }
 }

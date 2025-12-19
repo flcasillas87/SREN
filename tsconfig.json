@@ -9,6 +9,7 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "./",
     "paths": {
+      "@assets/*": ["src/assets/*"],
       "@core/*": ["src/app/core/*"],
       "@services/*": ["src/app/core/services/*"],
       "@guards/*": ["src/app/core/guards/*"],
