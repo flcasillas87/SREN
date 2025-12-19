@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
@@ -9,7 +9,7 @@ import { CentralesService } from '../../core/services/centrales.service';
 @Component({
   selector: 'app-centrales-list',
   standalone: true,
-  imports: [CommonModule, MatProgressSpinnerModule, MatTableModule],
+  imports: [MatProgressSpinnerModule, MatTableModule],
   templateUrl: './centrales-list.component.html',
   styleUrls: ['./centrales-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,

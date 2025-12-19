@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 
 import { CentralesService } from '../core/services/centrales.service';
@@ -6,7 +6,7 @@ import { CentralesService } from '../core/services/centrales.service';
 @Component({
   selector: 'app-centrales',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './centrales.component.html',
   styleUrls: ['./centrales.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
