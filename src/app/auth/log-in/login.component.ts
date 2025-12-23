@@ -1,13 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder,  FormControl,  ReactiveFormsModule,  Validators} from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import  {MatDividerModule} from '@angular/material/divider';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule} from '@angular/material/icon';
-import { MatInputModule } from '@angular/material/input';
 import { Router, RouterLink } from '@angular/router';
+import { material_modules } from '@core/providers/material.provider';
 import { AuthService } from '@services/auth.service';
+import { AuthError } from '@supabase/supabase-js';
 
 interface LogInForm {
   email: FormControl<null | string>;
@@ -17,13 +13,9 @@ interface LogInForm {
   selector: 'app-log-in',
   imports: [
     ReactiveFormsModule,
-    MatButtonModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatDividerModule,
+    material_modules,
     RouterLink,
+
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
