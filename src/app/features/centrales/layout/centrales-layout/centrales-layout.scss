@@ -1,0 +1,15 @@
+/* Tab base */
+.tab-link {
+  @apply relative pb-3 text-sm font-medium text-slate-500
+         hover:text-slate-900 transition-colors;
+}
+
+/* Tab activo (routerLinkActive) */
+.tab-active {
+  @apply text-blue-600;
+
+  &::after {
+    content: '';
+    @apply absolute left-0 right-0 bottom-0 h-0.5 bg-blue-600;
+  }
+}

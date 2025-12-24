@@ -1,0 +1,44 @@
+<!-- Header del feature -->
+<header class="centrales-header">
+  <div class="header-left">
+    <h2>Centrales Generadoras</h2>
+    <span class="subtitle">
+      Gestión y operación
+    </span>
+  </div>
+
+  <div class="header-right">
+    <!-- Selector de central (componente reutilizable) -->
+     
+  </div>
+</header>
+
+<!-- Navegación interna del feature -->
+<nav class="centrales-tabs">
+  <a
+    routerLink="detalle"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+  >
+    Ficha técnica
+  </a>
+
+  <a
+    routerLink="operacion"
+    routerLinkActive="active"
+  >
+    Operación
+  </a>
+
+  <a
+    routerLink="historico"
+    routerLinkActive="active"
+  >
+    Histórico
+  </a>
+</nav>
+
+<!-- Contenido dinámico -->
+<section class="centrales-content">
+  <router-outlet />
+</section>

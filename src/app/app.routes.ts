@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard, publicGuard } from '@guards/auth.guard';
 
+
 export const routes: Routes = [
 
   // LOGIN (público)
@@ -15,42 +16,11 @@ export const routes: Routes = [
   {
     path: 'centrales',
     canActivate: [publicGuard],
-    loadComponent: () =>
-      import('./features/centrales/layout/centrales.component')
-        .then(m => m.CentralesComponent),
+    loadChildren: () =>
+      import('./features/centrales/centrales.routes')
+        .then(m => m.centralesRoutes)
   },
 
-  {
-    path: 'centrales-detail',
-    canActivate: [publicGuard],
-    loadComponent: () =>
-      import('./features/centrales-detail/centrales-detail')
-        .then(m => m.CentralesDetailComponent),
-  },
-
-    {
-    path: 'central-detalle',
-    canActivate: [publicGuard],
-    loadComponent: () =>
-      import('./features/centrales/pages/central-detalle.page')
-        .then(m => m.CentralDetallePage),
-  },
-
-    {
-    path: 'centrales-list',
-    canActivate: [publicGuard],
-    loadComponent: () =>
-      import('./features/centrales-list/centrales-list.component')
-        .then(m => m.CentralesListComponent),
-  },
-
-  {
-    path: 'consumos-form',
-    canActivate: [publicGuard],
-    loadComponent: () =>
-      import('./features/consumos-form/consumos-form.component')
-        .then(m => m.ConsumosFormComponent),
-  },
 
 
 
@@ -65,7 +35,7 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () =>
-          import('./features/centrales-list/centrales-list.component')
+          import('./features/centrales/pages/centrales-list/centrales-list.component')
             .then(m => m.CentralesListComponent),
       },
     ],

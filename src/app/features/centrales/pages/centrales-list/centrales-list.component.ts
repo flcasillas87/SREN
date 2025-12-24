@@ -3,8 +3,8 @@ import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@ang
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTableModule } from '@angular/material/table';
 
-import { Central } from '../../core/models/central.model';
-import { CentralesService } from '../../core/services/centrales.service';
+import { Central } from '../../../../core/models/central.model';
+import { CentralesService } from '../../../../core/services/centrales.service';
 
 @Component({
   selector: 'app-centrales-list',

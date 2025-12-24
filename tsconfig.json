@@ -15,7 +15,9 @@
       "@guards/*": ["src/app/core/guards/*"],
       "@shared/*": ["src/app/shared/*"],
       "@auth/*": ["src/app/auth/*"],
-      "@env/*": ["src/environment/*"]
+      "@env/*": ["src/environment/*"],
+      "@features/*": ["src/app/features/*"],
+      "@centrales/*": ["src/app/features/centrales/*"]
     },
 
     "skipLibCheck": true,

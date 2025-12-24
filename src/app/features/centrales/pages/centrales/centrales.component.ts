@@ -1,24 +1,28 @@
 
 import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
+import { RouterModule,RouterOutlet } from '@angular/router';
 
-import { CentralesService } from '../../../core/services/centrales.service';
+import { CentralesService } from '../../../../core/services/centrales.service';
 
 @Component({
   selector: 'app-centrales',
   standalone: true,
-  imports: [],
+  imports: [RouterModule, RouterOutlet],
   templateUrl: './centrales.component.html',
-  styleUrls: ['./centrales.component.css'],
+  styleUrls: ['./centrales.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CentralesComponent {
+
+    // 🔹 Servicio inyectado
+  private readonly _centralesService = inject(CentralesService);
+  
   // 🔹 Effect de inicialización
   private readonly _initEffect = effect(() => {
     this._centralesService.loadCentrales();
   });
 
-  // 🔹 Servicio inyectado
-  private readonly _centralesService = inject(CentralesService);
+
 
   // 🔹 Señales públicas
   public readonly centrales = this._centralesService.centrales;
