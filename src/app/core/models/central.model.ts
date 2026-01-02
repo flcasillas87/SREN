@@ -1,10 +1,14 @@
+import { EstadoOperacion, TipoCentral } from '@enums';
+
 export interface Central {
   centralId: number;
   nombre: string;
-  ubicacionEstado: string;
+  ubicacionEstado?: string;
   ubicacionMunicipio?: string;
-  tipoCentral: string;
-  estadoOperacion: string;
+
+  tipoCentral: TipoCentral;
+  estadoOperacion: EstadoOperacion;
+
   capacidadMw?: number;
   combustiblePrincipal?: string;
   combustibleSecundario?: string;

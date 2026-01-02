@@ -62,7 +62,6 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "options": {
-
             "buildTarget": "sren:build"
           },
           "defaultConfiguration": "development",

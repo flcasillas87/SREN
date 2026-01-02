@@ -1,4 +1,3 @@
-// core/error.service.ts
 import { Injectable, Signal, signal } from '@angular/core';
 
 @Injectable({ providedIn: 'root' })

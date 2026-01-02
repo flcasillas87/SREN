@@ -25,11 +25,9 @@ export class AuthService {
       this._session.set(data.session);
     });
 
-    this._supabase.auth.onAuthStateChange(
-      (_event: AuthChangeEvent, session: Session | null) => {
-        this._session.set(session);
-      },
-    );
+    this._supabase.auth.onAuthStateChange((_event: AuthChangeEvent, session: Session | null) => {
+      this._session.set(session);
+    });
   }
 
   public session(): Session | null {
@@ -37,32 +35,21 @@ export class AuthService {
     return this._session();
   }
 
-  public async logIn(
-    credentials: SignInWithPasswordCredentials,
-  ) {
+  public async logIn(credentials: SignInWithPasswordCredentials) {
     console.log('[AuthService.logIn] credentials:', credentials);
 
-    const response =
-      await this._supabase.auth.signInWithPassword(credentials);
+    const response = await this._supabase.auth.signInWithPassword(credentials);
 
     if (response.error) {
-      console.error(
-        '[AuthService] Login error:',
-        response.error.message,
-      );
+      console.error('[AuthService] Login error:', response.error.message);
     } else {
-      console.log(
-        '[AuthService] Login OK:',
-        response.data.user?.email,
-      );
+      console.log('[AuthService] Login OK:', response.data.user?.email);
     }
 
     return response;
   }
 
-  public async signUp(
-    credentials: SignUpWithPasswordCredentials,
-  ) {
+  public async signUp(credentials: SignUpWithPasswordCredentials) {
     return this._supabase.auth.signUp(credentials);
   }
 
@@ -71,4 +58,3 @@ export class AuthService {
     this._session.set(null);
   }
 }
-

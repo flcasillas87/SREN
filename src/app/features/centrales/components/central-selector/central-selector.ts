@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './central-selector.html',
   styleUrl: './central-selector.scss',
 })
-export class CentralSelector {
-
-}
+export class CentralSelector {}

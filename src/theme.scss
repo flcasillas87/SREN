@@ -41,25 +41,27 @@
 // -----------------------------
 // 2. Crear theme Angular Material
 // -----------------------------
-$my-theme: mat.define-theme((
-  color: (
-    theme-type: light,
-    primary: mat.$green-palette,    // referencia, usa tus variables CSS
-    tertiary: mat.$orange-palette,  // referencia, usa tus variables CSS
-    use-system-variables: true
-  ),
-  typography: (
-    brand-family: 'Roboto, sans-serif',
-    plain-family: 'Roboto, sans-serif'
-  ),
-  density: (
-    scale: 0
+$my-theme: mat.define-theme(
+  (
+    color: (
+      theme-type: light,
+      primary: mat.$green-palette,
+      // referencia, usa tus variables CSS
+      tertiary: mat.$orange-palette,
+      // referencia, usa tus variables CSS
+      use-system-variables: true,
+    ),
+    typography: (
+      brand-family: 'Roboto, sans-serif',
+      plain-family: 'Roboto, sans-serif',
+    ),
+    density: (
+      scale: 0,
+    ),
   )
-));
+);
 
 // -----------------------------
 // 3. Aplicar theme a todos los componentes
 // -----------------------------
 @include mat.all-component-themes($my-theme);
-
-

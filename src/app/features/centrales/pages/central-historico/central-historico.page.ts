@@ -6,6 +6,4 @@ import { Component } from '@angular/core';
   templateUrl: './central-historico.page.html',
   styleUrl: './central-historico.page.scss',
 })
-export class CentralHistoricoPage {
-
-}
+export class CentralHistoricoPage {}
