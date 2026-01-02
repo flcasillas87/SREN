@@ -14,9 +14,7 @@
         <!-- EMAIL -->
         <mat-form-field appearance="outline" class="full-width">
           <mat-label>Email</mat-label>
-
           <input matInput type="email" formControlName="email" autocomplete="email" />
-
           <mat-error>
             @if (
             logInForm.get('email')?.hasError('required')
@@ -54,17 +52,12 @@
             Iniciar sesión
           </button>
         </div>
-
       </form>
     </mat-card-content>
 
     <mat-card-actions class="center-actions">
-      <span>No tienes una cuenta?</span>
-      <a mat-button color="primary" routerLink="/auth/sign-up">
-        Crear cuenta
-      </a>
+      <p>¿No tienes cuenta?</p>
+      <button mat-button routerLink="/auth/signup">Crea una cuenta aquí</button>
     </mat-card-actions>
-
   </mat-card>
-
 </section>
