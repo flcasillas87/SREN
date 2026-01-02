@@ -1,9 +1,8 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormBuilder,  FormControl,  ReactiveFormsModule,  Validators} from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import { Router,RouterLink } from '@angular/router';
 import { material_modules } from '@core/providers/material.provider';
 import { AuthService } from '@services/auth.service';
-import { AuthError } from '@supabase/supabase-js';
 
 interface LogInForm {
   email: FormControl<null | string>;
@@ -12,10 +11,9 @@ interface LogInForm {
 @Component({
   selector: 'app-log-in',
   imports: [
-    ReactiveFormsModule,
     material_modules,
-    RouterLink,
-
+    ReactiveFormsModule,
+    RouterLink
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
