@@ -7,11 +7,11 @@
 │   │   └── 0001_initial_schema.sql
 │   │
 │   ├── 📂 catalogos/               # TABLAS MAESTRAS (Se cargan primero)
-│   │   ├── 01_cat_monedas.sql      
-│   │   ├── 02_cat_sociedades.sql   
+│   │   ├── 01_cat_monedas.sql
+│   │   ├── 02_cat_sociedades.sql
 │   │   ├── 03_cat_proveedores.sql  
 │   │   ├── 04_cat_presupuesto.sql  # (Fondo, Centro Gestor, PosPre)
-│   │   └── 05_cat_cuentas.sql      
+│   │   └── 05_cat_cuentas.sql
 │   │
 │   ├── 📂 transacciones/           # TABLA PRINCIPAL (Depende de los catálogos)
 │   │   └── 06_diario_documentos_tpl.sql
