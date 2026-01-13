@@ -1,0 +1,2 @@
+create schema if not exists staging;    -- Para datos crudos y temporales
+create schema if not exists energia;    -- Para tablas maestras y lógica de negocio
