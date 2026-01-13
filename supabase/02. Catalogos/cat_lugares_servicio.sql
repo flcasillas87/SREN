@@ -1,3 +1,7 @@
+-- =========================================================
+-- Esquema: 
+-- Tabla: 
+-- =========================================================
 CREATE TABLE public.cat_lugares_servicio (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     nombre TEXT NOT NULL UNIQUE,
@@ -5,6 +9,18 @@ CREATE TABLE public.cat_lugares_servicio (
     estado_region TEXT, -- Ej: 'Nuevo León' o 'Texas'
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
 );
+
+-- =========================================================
+-- ÍNDICES
+----------------------------------------------------------
+
+
+-- =========================================================
+-- TRIGGERS
+-- =========================================================
+
+
+
 
 INSERT INTO public.cat_lugares_servicio (nombre, pais, estado_region) VALUES 
 ('', 'USA', 'Texas'),

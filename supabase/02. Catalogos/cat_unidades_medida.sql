@@ -1,9 +1,9 @@
 -- =========================================================
--- Esquema: public
+-- Esquema: datos_maestros
 -- Tabla: cat_unidades
 -- =========================================================
-drop table if exists public.cat_unidades cascade;
-create table public.cat_unidades (
+drop table if exists datos_maestros.cat_unidades cascade;
+create table datos_maestros.cat_unidades (
   id_unidad serial not null,
   codigo character varying(20) not null,
   descripcion text null,
@@ -36,7 +36,7 @@ WHERE es_activo = true;
 -- DATOS SEMILLA (SEEDING)
 -- Vinculados a los IDs creados en cat_combustibles
 -- =============================================================================
-insert into public.cat_unidades (
+insert into datos_maestros.cat_unidades (
     codigo,
     descripcion,
     factor_conversion_mbtu,
