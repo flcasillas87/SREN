@@ -1,35 +1,35 @@
-﻿"id_central_generacion","nombre_central","ubicacion_estado","ubicacion_municipio","tipo_central","estado_operacion","capacidad_mw","combustible_principal","combustible_secundario","created_at","updated_at"
-"1","CT  Carbon II","Coahuila","Nava","Central Termoelectrica","operando","1400.0","Carbon    "," Diesel","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"2","CT  Guadalupe Victoria","Coahuila","Villa Juárez ","Central Termoelectrica","operando","320.0","Gas Natural","Combustoleo    Diesel","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"3","CCC El Encino","Chihuahua","El Encino","Central Ciclo Combinado","operando","220.0","Gas Natural ","Combustoleo","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"4","CT Emilio Portes Gil (U3)","Tamaulipas","Río Bravo","Central Termoelectrica","operando","300.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"5","CCC   Emilio Portes Gil (U4) ","Tamaulipas","Río Bravo","Central Ciclo Combinado","operando","225.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"6","CT Francisco Villa","Chihuahua","Delicias ","Central Termoeléctrica ","operando","316.0","Gas Natural ","Combustoleo    Diesel (Pilotos)","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"7","CCC  Gomez Palacio","Coahuila","Gomez Palacio","Central Ciclo Combinado","operando","240.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"8","CTG  Monclova","Coahuila","Monclova","Central Termoelectrica","operando","55.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"9","CTG  Tecnologico","Nuevo Leon","Monterrey","Central Termoelectrica","operando","30.0","Diesel","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"10","CTG   Universidad","Nuevo Leon","Monterrey","Central Termoelectrica","operando","28.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"11","CTG  Leona","Nuevo Leon","Monterrey","Central Termoelectrica","operando","28.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"12","CTG  Fundidora","Nuevo Leon","Monterrey","Central Termoelectrica","operando","14.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"13","CT  Samalayuca B. Juarez","Chihuahua","Samalayuca","Central Termoelectrica","operando","316.0","Gas Natural ","Combustóleo","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"15","CTG  La Laguna","Coahuila","Gomez Palacio","Central Termoelectrica","operando","60.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"28","CCC Huinala II","Nuevo Leon","Pesqueria","Central Ciclo Combinado","operando","260.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"29","CCC Río Bravo II (Anáhuac)","Tamaulipas","Río Bravo","Central Ciclo Combinado","operando","495.0","Gas Natural ","Diesel ","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"30","CCC  Chihuahua III","Chihuahua","Samalayuca","Central Ciclo Combinado","operando","260.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"31","CT Villa de Reyes","San Luis Potosi","Villa de Reyes","Central Termoelectrica","operando","700.0","Gas Natural","Combustóleo","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"32","CC Villa de Reyes","San Luis Potosi","Villa de Reyes","Central Ciclo Combinado","operando","437.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"33","CC Lerdo","Coahuila","Villa Juárez ","Central Ciclo Combinado","No","350.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"34","CT Altamira","Tamaulipas","Altamira","Central Termoelectrica","operando","916.0","Gas Natural","Combustóleo","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"14","CCC  Samalayuca II","Chihuahua","Samalayuca","Central Ciclo Combinado","operando","690.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"16","CTG  Chavez","Coahuila","Francisco I. Madero","Central Turbo Gas","operando","15.0","Gas Natural ","Diesel para el arranque","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"17","CTG Parque","Chihuahua","Cd. Juárez","Central Turbo Gas","operando","65.0","Diesel","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"18","CTG  Industrial","Chihuahua","Cd. Juárez","Central Turbo Gas","operando","20.0","Diesel","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"19","CCC Saltillo","Coahuila","Ramos Arispe","Central Ciclo Combinado","operando","248.0","Gas Natural","Diesel","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"20","CCC Norte I","Durango","La Trinidad ","Central Ciclo Combinado","operando","508.0","Gas Natural ","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"21","CCC Norte II","Chihuahua","El Encino","Central Ciclo Combinado","operando","450.0","Gas Natural ","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"22","CCC Norte III","Chihuahua","Samalayuca","Central Ciclo Combinado","operando","907.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"23","CCC  Chihuahua II","Chihuahua","El Encino","Central Ciclo Combinado","operando","448.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"25","CT  Lopez Portillo (Rio Escondido)","Coahuila","Nava","Central Termoelectrica","operando","1200.0","Carbon       ","Diesel","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"26","CTG Huinala","Nuevo Leon","Pesqueria","Central Termoelectrica","operando","150.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"27","CCC Huinala","Nuevo Leon","Pesqueria","Central Ciclo Combinado","operando","377.6","Gas Natural","","2025-10-30 16:44:37.456318+00","2025-10-30 17:12:26.422006+00"
-"24","cc noreste","Nuevo Leon","Escobedo","Central Ciclo Combinado","operando","857.0","Gas Natural","","2025-10-30 16:44:37.456318+00","2026-01-13 15:01:03.578774+00"
+﻿id_central_generacion,nombre_central,ubicacion_estado,ubicacion_municipio,tipo_central,estado_operacion,capacidad_mw,combustible_principal,combustible_secundario
+1,CT  Carbon II,Coahuila,Nava,Central Termoelectrica,operando,1400,Carbon    , Diesel
+2,CT  Guadalupe Victoria,Coahuila,Villa Juárez ,Central Termoelectrica,operando,320,Gas Natural,Combustoleo    Diesel
+3,CCC El Encino,Chihuahua,El Encino,Central Ciclo Combinado,operando,220,Gas Natural ,Combustoleo
+4,CT Emilio Portes Gil (U3),Tamaulipas,Río Bravo,Central Termoelectrica,operando,300,Gas Natural,
+5,CCC   Emilio Portes Gil (U4) ,Tamaulipas,Río Bravo,Central Ciclo Combinado,operando,225,Gas Natural,
+6,CT Francisco Villa,Chihuahua,Delicias ,Central Termoeléctrica ,operando,316,Gas Natural ,Combustoleo    Diesel (Pilotos)
+7,CCC  Gomez Palacio,Coahuila,Gomez Palacio,Central Ciclo Combinado,operando,240,Gas Natural,
+8,CTG  Monclova,Coahuila,Monclova,Central Termoelectrica,operando,55,Gas Natural,
+9,CTG  Tecnologico,Nuevo Leon,Monterrey,Central Termoelectrica,operando,30,Diesel,
+10,CTG   Universidad,Nuevo Leon,Monterrey,Central Termoelectrica,operando,28,Gas Natural,
+11,CTG  Leona,Nuevo Leon,Monterrey,Central Termoelectrica,operando,28,Gas Natural,
+12,CTG  Fundidora,Nuevo Leon,Monterrey,Central Termoelectrica,operando,14,Gas Natural,
+13,CT  Samalayuca B. Juarez,Chihuahua,Samalayuca,Central Termoelectrica,operando,316,Gas Natural ,Combustóleo
+15,CTG  La Laguna,Coahuila,Gomez Palacio,Central Termoelectrica,operando,60,Gas Natural,
+28,CCC Huinala II,Nuevo Leon,Pesqueria,Central Ciclo Combinado,operando,260,Gas Natural,
+29,CCC Río Bravo II (Anáhuac),Tamaulipas,Río Bravo,Central Ciclo Combinado,operando,495,Gas Natural ,Diesel 
+30,CCC  Chihuahua III,Chihuahua,Samalayuca,Central Ciclo Combinado,operando,260,Gas Natural,
+31,CT Villa de Reyes,San Luis Potosi,Villa de Reyes,Central Termoelectrica,operando,700,Gas Natural,Combustóleo
+32,CC Villa de Reyes,San Luis Potosi,Villa de Reyes,Central Ciclo Combinado,operando,437,Gas Natural,
+33,CC Lerdo,Coahuila,Villa Juárez ,Central Ciclo Combinado,No,350,Gas Natural,
+34,CT Altamira,Tamaulipas,Altamira,Central Termoelectrica,operando,916,Gas Natural,Combustóleo
+14,CCC  Samalayuca II,Chihuahua,Samalayuca,Central Ciclo Combinado,operando,690,Gas Natural,
+16,CTG  Chavez,Coahuila,Francisco I. Madero,Central Turbo Gas,operando,15,Gas Natural ,Diesel para el arranque
+17,CTG Parque,Chihuahua,Cd. Juárez,Central Turbo Gas,operando,65,Diesel,
+18,CTG  Industrial,Chihuahua,Cd. Juárez,Central Turbo Gas,operando,20,Diesel,
+19,CCC Saltillo,Coahuila,Ramos Arispe,Central Ciclo Combinado,operando,248,Gas Natural,Diesel
+20,CCC Norte I,Durango,La Trinidad ,Central Ciclo Combinado,operando,508,Gas Natural ,
+21,CCC Norte II,Chihuahua,El Encino,Central Ciclo Combinado,operando,450,Gas Natural ,
+22,CCC Norte III,Chihuahua,Samalayuca,Central Ciclo Combinado,operando,907,Gas Natural,
+23,CCC  Chihuahua II,Chihuahua,El Encino,Central Ciclo Combinado,operando,448,Gas Natural,
+25,CT  Lopez Portillo (Rio Escondido),Coahuila,Nava,Central Termoelectrica,operando,1200,Carbon       ,Diesel
+26,CTG Huinala,Nuevo Leon,Pesqueria,Central Termoelectrica,operando,150,Gas Natural,
+27,CCC Huinala,Nuevo Leon,Pesqueria,Central Ciclo Combinado,operando,377.6,Gas Natural,
+24,cc noreste,Nuevo Leon,Escobedo,Central Ciclo Combinado,operando,857,Gas Natural,
