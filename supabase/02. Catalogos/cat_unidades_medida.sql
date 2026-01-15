@@ -15,22 +15,22 @@ create table datos_maestros.cat_unidades (
   -- Índices y restricciones
   constraint cat_unidades_pkey primary key (id_unidad),
   constraint cat_unidades_codigo_key unique (codigo),
-  constraint fk_cat_unidades_combustible foreign key (id_combustible) references public.cat_combustibles (id_combustible) on delete restrict
+  constraint fk_cat_unidades_combustible foreign key (id_combustible) references datos_maestros.cat_combustibles (id_combustible) on delete restrict
 ) TABLESPACE pg_default;
 -- =========================================================
 -- TRIGGERS
 -- =========================================================
 create trigger tr_cat_unidades_updated before
-update on public.cat_unidades for each row execute function public.set_updated_at_mx();
+update on datos_maestros.cat_unidades for each row execute function public.set_updated_at_mx();
 -- =========================================================
 -- ÍNDICES
 -- =========================================================
 -- Índice para acelerar los JOINs con combustibles
-CREATE INDEX idx_cat_unidades_id_combustible ON public.cat_unidades (id_combustible);
+CREATE INDEX idx_cat_unidades_id_combustible ON datos_maestros.cat_unidades (id_combustible);
 -- Índice funcional para acelerar el ETL (Búsquedas exactas sin importar espacios/mayúsculas)
-CREATE INDEX idx_cat_unidades_codigo_normalizado ON public.cat_unidades (upper(trim(codigo)));
+CREATE INDEX idx_cat_unidades_codigo_normalizado ON datos_maestros.cat_unidades (upper(trim(codigo)));
 -- Índice para el estado activo (Útil si tienes miles de unidades y solo buscas las vigentes)
-CREATE INDEX idx_cat_unidades_es_activo ON public.cat_unidades (es_activo)
+CREATE INDEX idx_cat_unidades_es_activo ON datos_maestros.cat_unidades (es_activo)
 WHERE es_activo = true;
 -- =============================================================================
 -- DATOS SEMILLA (SEEDING)

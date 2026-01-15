@@ -2,7 +2,7 @@
 -- Esquema: 
 -- Tabla: 
 -- =========================================================
-CREATE TABLE public.cat_lugares_servicio (
+CREATE TABLE datos_maestros.cat_lugares_servicio (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     nombre TEXT NOT NULL UNIQUE,
     pais VARCHAR(3) CHECK (pais IN ('MX', 'USA')), -- Solo permite estos dos

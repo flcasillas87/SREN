@@ -15,7 +15,7 @@
 
 
 -- Tabla Maestra de Proveedores
-CREATE TABLE IF NOT EXISTS public.cat_proveedores (
+CREATE TABLE IF NOT EXISTS datos_maestros.cat_proveedores (
     id uuid NOT NULL DEFAULT extensions.uuid_generate_v4(),
     razon_social text NOT NULL, -- Ahora este es el campo principal
     rfc text,
