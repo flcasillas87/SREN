@@ -6,7 +6,7 @@
 			"driver": "postgres-jdbc",
 			"name": "SREN",
 			"save-password": true,
-			"virtual-model-id": "postgres-jdbc-19bc3b7dcf2-f740b8dd10e67fa",
+			"show-system-objects": true,
 			"configuration": {
 				"host": "aws-1-us-east-2.pooler.supabase.com",
 				"port": "6543",

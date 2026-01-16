@@ -1,0 +1,7 @@
+-- Unidades no válidas
+select distinct nombre_unidad
+from staging.stg_precios_vinculantes_combustibles
+where upper(trim(nombre_unidad)) not in (
+    select upper(trim(codigo))
+    from datos_maestros.cat_unidades_medida
+);
