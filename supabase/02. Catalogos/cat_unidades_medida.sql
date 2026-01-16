@@ -2,9 +2,9 @@
 -- Esquema: datos_maestros
 -- Tabla: cat_unidades
 -- =========================================================
-drop table if exists datos_maestros.cat_unidades cascade;
-create table datos_maestros.cat_unidades (
-  id_unidad serial not null,
+drop table if exists datos_maestros.cat_unidades_medida cascade;
+create table datos_maestros.cat_unidades_medida (
+  id_unidad_medida serial not null,
   codigo character varying(20) not null,
   descripcion text null,
   factor_conversion_mbtu numeric(15, 8) not null,
@@ -13,30 +13,30 @@ create table datos_maestros.cat_unidades (
   created_at timestamp null default (now() at time zone 'America/Monterrey'),
   updated_at timestamp null default (now() at time zone 'America/Monterrey'),
   -- Índices y restricciones
-  constraint cat_unidades_pkey primary key (id_unidad),
-  constraint cat_unidades_codigo_key unique (codigo),
-  constraint fk_cat_unidades_combustible foreign key (id_combustible) references datos_maestros.cat_combustibles (id_combustible) on delete restrict
+  constraint cat_unidades_medida_pkey primary key (id_unidad_medida),
+  constraint cat_unidades_medida_codigo_key unique (codigo),
+  constraint fk_cat_unidades_medida_combustible foreign key (id_combustible) references datos_maestros.cat_combustibles (id_combustible) on delete restrict
 ) TABLESPACE pg_default;
 -- =========================================================
 -- TRIGGERS
 -- =========================================================
-create trigger tr_cat_unidades_updated before
-update on datos_maestros.cat_unidades for each row execute function public.set_updated_at_mx();
+create trigger tr_cat_unidades_medida_updated before
+update on datos_maestros.cat_unidades_medida for each row execute function public.set_updated_at_mx();
 -- =========================================================
 -- ÍNDICES
 -- =========================================================
 -- Índice para acelerar los JOINs con combustibles
-CREATE INDEX idx_cat_unidades_id_combustible ON datos_maestros.cat_unidades (id_combustible);
+CREATE INDEX idx_cat_unidades_medida_id_combustible ON datos_maestros.cat_unidades_medida (id_combustible);
 -- Índice funcional para acelerar el ETL (Búsquedas exactas sin importar espacios/mayúsculas)
-CREATE INDEX idx_cat_unidades_codigo_normalizado ON datos_maestros.cat_unidades (upper(trim(codigo)));
+CREATE INDEX idx_cat_unidades_medida_codigo_normalizado ON datos_maestros.cat_unidades_medida (upper(trim(codigo)));
 -- Índice para el estado activo (Útil si tienes miles de unidades y solo buscas las vigentes)
-CREATE INDEX idx_cat_unidades_es_activo ON datos_maestros.cat_unidades (es_activo)
+CREATE INDEX idx_cat_unidades_medida_es_activo ON datos_maestros.cat_unidades_medida (es_activo)
 WHERE es_activo = true;
 -- =============================================================================
 -- DATOS SEMILLA (SEEDING)
 -- Vinculados a los IDs creados en cat_combustibles
 -- =============================================================================
-insert into datos_maestros.cat_unidades (
+insert into datos_maestros.cat_unidades_medida (
     codigo,
     descripcion,
     factor_conversion_mbtu,

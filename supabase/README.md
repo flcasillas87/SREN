@@ -24,3 +24,31 @@
 ├── 📄 .gitignore                   # Para no subir los CSV con datos reales
 ├── 📄 README.md                    # Instrucciones del proyecto
 └── 📄 total_schema.sql             # (Opcional) Un solo archivo con todo unido
+
+# cat        → Datos maestros (catálogos)
+
+Combustibles
+Unidades
+Centrales
+Regiones
+Clientes
+Contratos
+
+Se cargan seeds.
+
+# stg        → Staging + validaciones + logs
+Este es el corazón del sistema.
+**    Datos crudos importados (Excel, API, CSV)
+    Tablas temporales
+    Validaciones
+    Logs
+    Errores
+    Auditoría técnica**
+
+
+# public     → Datos finales listos para BI / operación
+Aquí solo llega información limpia, validada y trazable.
+Precios vinculantes finales
+Suministros
+Pagos
+Vistas para Power BI
