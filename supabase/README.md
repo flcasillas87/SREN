@@ -21,9 +21,52 @@
 │       ├── proveedores.csv
 │       └── diario_operaciones.csv
 │
-├── 📄 .gitignore                   # Para no subir los CSV con datos reales
-├── 📄 README.md                    # Instrucciones del proyecto
-└── 📄 total_schema.sql             # (Opcional) Un solo archivo con todo unido
+03_public/
+├── precios_vinculantes_combustibles/
+│   ├── table.sql
+│   ├── indexes.sql
+│   ├── triggers.sql
+│   ├── functions.sql
+│   └── views.sql
+│
+├── suministro_combustibles/
+│   ├── table.sql
+│   ├── indexes.sql
+│   ├── triggers.sql
+│   └── views.sql
+│
+└── _shared/
+    ├── functions.sql
+    └── triggers.sql
+1️⃣ table.sql
+2️⃣ functions.sql
+3️⃣ triggers.sql
+4️⃣ indexes.sql
+5️⃣ view_dashboard.sql
+
+#Nomenclatura
+##Indices
+idx_<tabla>_<columnas>
+
+ej:
+idx_precios_vinculantes_fecha_combustible
+
+##triggers
+tr_<tabla>_<accion>
+
+ej:
+tr_precios_vinculantes_updated
+tr_precios_vinculantes_audit
+
+##Funciones
+fn_<tabla>_<proposito>
+fn_precios_vinculantes_validar_fecha()
+
+
+-- =====================================================
+-- TABLA: public.precios_vinculantes_combustibles
+-- OBJETO: INDICES
+-- =====================================================
 
 # cat        → Datos maestros (catálogos)
 
