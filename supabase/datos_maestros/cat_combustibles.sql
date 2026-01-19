@@ -5,7 +5,7 @@
 drop table if exists datos_maestros.cat_combustibles cascade;
 create table datos_maestros.cat_combustibles (
     id_combustible serial not null,
-    nombre character varying(50) not null,
+    nombre_combustible character varying(50) not null,
     codigo_corto character varying(10) null,
     -- Ej: 'GN', 'DSL', 'CBO'
     descripcion text null,

@@ -38,7 +38,7 @@ from staging.stg_precios_vinculantes_combustibles s
 where not exists (
     select 1
     from datos_maestros.cat_combustibles c
-    where upper(trim(s.nombre_combustible)) = upper(trim(c.nombre))
+    where upper(trim(s.nombre_combustible)) = upper(trim(c.nombre_combustible))
 );
 
 -- 5. Centrales no mapeadas
@@ -50,7 +50,7 @@ where not exists (
     select 1
     from datos_maestros.cat_centrales_generacion g
     where regexp_replace(upper(trim(s.nombre_central)), '\s+', ' ', 'g')
-        = regexp_replace(upper(trim(g.nombre)), '\s+', ' ', 'g')
+        = regexp_replace(upper(trim(g.nombre_central)), '\s+', ' ', 'g')
 );
 
 -- 6. Fechas inválidas

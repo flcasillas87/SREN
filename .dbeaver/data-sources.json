@@ -33,6 +33,7 @@
 			}
 		}
 	},
+	"virtual-models": {"postgres-jdbc-19bc3e41aba-1e137c25fe00c305":{"postgres":{"staging":{":stg_precios_vinculantes_combustibles":{"constraints":{"VIRTUAL_PK":{"type":"vpk","useAllColumns":true}}}}}}},
 	"connection-types": {
 		"dev": {
 			"name": "Development",
