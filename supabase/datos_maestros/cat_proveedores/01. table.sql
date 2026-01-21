@@ -1,23 +1,11 @@
 -- =========================================================
 -- Esquema: 
--- Tabla: 
+-- Tabla: Catálogo de Proveedores
 -- =========================================================
-
-
--- =========================================================
--- ÍNDICES
-----------------------------------------------------------
-
-
--- =========================================================
--- TRIGGERS
--- =========================================================
-
-
--- Tabla Maestra de Proveedores
+DROP TABLE IF EXISTS datos_maestros.cat_proveedores CASCADE;
 CREATE TABLE IF NOT EXISTS datos_maestros.cat_proveedores (
     id uuid NOT NULL DEFAULT extensions.uuid_generate_v4(),
-    razon_social text NOT NULL, -- Ahora este es el campo principal
+    razon_social text NOT NULL, 
     rfc text,
     email text,
     created_at timestamptz DEFAULT now(),
@@ -27,4 +15,3 @@ CREATE TABLE IF NOT EXISTS datos_maestros.cat_proveedores (
     CONSTRAINT cat_proveedores_rfc_key UNIQUE (rfc),
     CONSTRAINT cat_proveedores_razon_social_key UNIQUE (razon_social)
 );
-

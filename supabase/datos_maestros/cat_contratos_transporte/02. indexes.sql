@@ -1,0 +1,2 @@
+CREATE INDEX idx_contratos_transporte_nombre ON datos_maestros.cat_contratos_transporte (nombre_contrato);
+CREATE INDEX idx_contratos_transporte_activo ON datos_maestros.cat_contratos_transporte (activo) WHERE activo = true;
