@@ -1,0 +1,1 @@
+SELECT * FROM public.cat_proveedores LIMIT 0;

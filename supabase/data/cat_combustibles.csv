@@ -1,0 +1,5 @@
+﻿nombre,codigo_corto,descripcion,tipo,es_activo
+Gas Natural,GN,Gas natural seco para turbogeneración,Fósil,1
+Diesel,DSL,Combustible líquido destilado,Fósil,1
+Fuel Oil,FO,Combustible líquido residual (Combustóleo),Fósil,1
+Carbón,CBO,Carbón mineral para centrales térmicas,Fósil,1
