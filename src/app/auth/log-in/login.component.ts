@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { FormBuilder,  FormControl,  ReactiveFormsModule,  Validators} from '@angular/forms';
-import { Router,RouterLink } from '@angular/router';
-import { material_modules } from '@core/providers/material.provider';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@services/auth.service';
 
 interface LogInForm {
@@ -10,26 +9,18 @@ interface LogInForm {
 }
 @Component({
   selector: 'app-log-in',
-  imports: [
-    material_modules,
-    ReactiveFormsModule,
-    RouterLink
-  ],
+  imports: [ ReactiveFormsModule, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-
 export default class LoginComponent {
   private _formBuilder = inject(FormBuilder);
   private _authService = inject(AuthService);
   private _router = inject(Router);
 
   public logInForm = this._formBuilder.nonNullable.group<LogInForm>({
-    email: this._formBuilder.control(null, [
-      Validators.required,
-      Validators.email,
-    ]),
+    email: this._formBuilder.control(null, [Validators.required, Validators.email]),
     password: this._formBuilder.control(null, [Validators.required]),
   });
 

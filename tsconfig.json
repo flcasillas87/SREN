@@ -1,4 +1,3 @@
-/* To learn more about this file see: https://angular.io/config/tsconfig. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -9,13 +8,25 @@
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "./",
     "paths": {
+      "@app/*": ["src/app/*"],
+
       "@assets/*": ["src/assets/*"],
+      "@env/*": ["src/environment/*"],
+
       "@core/*": ["src/app/core/*"],
       "@services/*": ["src/app/core/services/*"],
       "@guards/*": ["src/app/core/guards/*"],
+
+      "@shared": ["src/app/shared/index.ts"],
       "@shared/*": ["src/app/shared/*"],
-      "@auth/*": ["src/app/auth/*"],
-      "@env/*": ["src/environment/*"],
+      "@components/*": ["src/app/shared/components/*"],
+
+      "@models": ["src/app/core/models/index.ts"],
+      "@models/*": ["src/app/core/models/*"],
+
+      "@enums": ["src/app/core/enums/index.ts"],
+      "@enums/*": ["src/app/core/enums/*"],
+
       "@features/*": ["src/app/features/*"],
       "@centrales/*": ["src/app/features/centrales/*"]
     },

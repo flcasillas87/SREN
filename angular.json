@@ -10,7 +10,8 @@
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true
         }
       },
       "architect": {
@@ -62,7 +63,6 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "options": {
-
             "buildTarget": "sren:build"
           },
           "defaultConfiguration": "development",

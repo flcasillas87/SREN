@@ -1,63 +1,107 @@
-<section class="login-container">
+<section class="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 px-4">
+  <div class="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8">
+    <!-- Header -->
+    <div class="flex flex-col items-center mb-6">
+      <img
+        src="https://cdn.cfe.gob.mx/2019/assets/images/logo.svg"
+        alt="logo"
+        class="h-12 mb-4"
+      />
+      <h1 class="text-2xl font-semibold text-gray-800 dark:text-gray-100">
+        SREN
+      </h1>
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        Iniciar sesión
+      </p>
+    </div>
 
-  <mat-card class="login-card">
+    <!-- Form -->
+    <form
+      [formGroup]="logInForm"
+      (ngSubmit)="submit()"
+      class="space-y-5"
+    >
+      <!-- Email -->
+      <div>
+        <label
+          for="email"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          autocomplete="email"
+          class="mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-600
+                 bg-white dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-gray-100
+                 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
 
-    <mat-card-header>
-      <img src="https://cdn.cfe.gob.mx/2019/assets/images/logo.svg" alt="logo" class="logo" />
-      <mat-card-title>SREN</mat-card-title>
-      <mat-card-subtitle>Iniciar sesión</mat-card-subtitle>
-    </mat-card-header>
-
-    <mat-card-content>
-      <form [formGroup]="logInForm" (ngSubmit)="submit()" class="login-form">
-
-        <!-- EMAIL -->
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Email</mat-label>
-          <input matInput type="email" formControlName="email" autocomplete="email" />
-          <mat-error>
-            @if (
-            logInForm.get('email')?.hasError('required')
-            && (logInForm.get('email')?.dirty || logInForm.get('email')?.touched)
-            ) {
+        @if (
+          logInForm.get('email')?.hasError('required') &&
+          (logInForm.get('email')?.dirty || logInForm.get('email')?.touched)
+        ) {
+          <p class="mt-1 text-sm text-red-600">
             El email es obligatorio
-            }
-            @else if (
-            logInForm.get('email')?.hasError('email')
-            ) {
+          </p>
+        } @else if (logInForm.get('email')?.hasError('email')) {
+          <p class="mt-1 text-sm text-red-600">
             Email inválido
-            }
-          </mat-error>
-        </mat-form-field>
+          </p>
+        }
+      </div>
 
-        <!-- PASSWORD -->
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Contraseña</mat-label>
+      <!-- Password -->
+      <div>
+        <label
+          for="password"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
+          Contraseña
+        </label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          autocomplete="current-password"
+          class="mt-1 w-full rounded-lg border border-gray-300 dark:border-gray-600
+                 bg-white dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-gray-100
+                 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
 
-          <input matInput type="password" formControlName="password" autocomplete="current-password" />
-
-          <mat-error>
-            @if (
-            logInForm.get('password')?.hasError('required')
-            && (logInForm.get('password')?.dirty || logInForm.get('password')?.touched)
-            ) {
+        @if (
+          logInForm.get('password')?.hasError('required') &&
+          (logInForm.get('password')?.dirty || logInForm.get('password')?.touched)
+        ) {
+          <p class="mt-1 text-sm text-red-600">
             La contraseña es obligatoria
-            }
-          </mat-error>
-        </mat-form-field>
+          </p>
+        }
+      </div>
 
-        <!-- ACTIONS -->
-        <div class="actions">
-          <button mat-raised-button color="primary" type="submit" [disabled]="logInForm.invalid">
-            Iniciar sesión
-          </button>
-        </div>
-      </form>
-    </mat-card-content>
+      <!-- Actions -->
+      <button
+        type="submit"
+        [disabled]="logInForm.invalid"
+        class="w-full rounded-lg bg-blue-600 py-2.5 text-white font-medium
+               hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed
+               transition"
+      >
+        Iniciar sesión
+      </button>
+    </form>
 
-    <mat-card-actions class="center-actions">
+    <!-- Footer -->
+    <div class="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
       <p>¿No tienes cuenta?</p>
-      <button mat-button routerLink="/auth/signup">Crea una cuenta aquí</button>
-    </mat-card-actions>
-  </mat-card>
+      <a
+        routerLink="/auth/signup"
+        class="text-blue-600 hover:underline font-medium"
+      >
+        Crea una cuenta aquí
+      </a>
+    </div>
+  </div>
 </section>

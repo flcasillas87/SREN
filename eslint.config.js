@@ -6,98 +6,112 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import unusedImports from 'eslint-plugin-unused-imports';
 import importPlugin from 'eslint-plugin-import';
 
-/**
- * Configuración ESLint para Angular 20 + TypeScript
- * - Incluye soporte Prettier
- * - Orden de imports
- * - Reglas de estilo TS
- * - Reglas Angular para templates y accesibilidad
- */
 export default tsEslint.config(
+  // ==================================================
+  // 🔹 TypeScript / Angular source files
+  // ==================================================
   {
-    // Archivos TS a validar
     files: ['**/*.ts'],
-
-    // Archivos/carpetas a ignorar
     ignores: ['.angular/**', '.nx/**', 'coverage/**', 'dist/**'],
 
-    // Configs base
     extends: [
-      eslint.configs.recommended, // Reglas ESLint base
-      ...tsEslint.configs.recommended, // Reglas TypeScript recomendadas
-      ...tsEslint.configs.stylistic, // Estilo TypeScript
-      ...angularEslint.configs.tsRecommended, // Angular TS recomendado
-      prettierConfig, // Compatibilidad Prettier
+      eslint.configs.recommended,
+      ...tsEslint.configs.recommended,
+      ...tsEslint.configs.stylistic,
+      ...angularEslint.configs.tsRecommended,
+      prettierConfig,
     ],
 
-    // Procesador para templates inline en Angular
     processor: angularEslint.processInlineTemplates,
 
-    // Plugins adicionales
     plugins: {
       'simple-import-sort': simpleImportSort,
       'unused-imports': unusedImports,
       import: importPlugin,
     },
 
-    // Reglas específicas
     rules: {
-      // Tipado estricto (descomentar si quieres prohibir any)
-      // '@typescript-eslint/no-explicit-any': 'error',
+      // =========================
+      // TypeScript
+      // =========================
+      '@typescript-eslint/no-explicit-any': 'warn',
 
-      // Nombres y accesibilidad
+      // =========================
+      // Naming & visibility
+      // =========================
       '@typescript-eslint/naming-convention': [
         'error',
         {
           selector: 'property',
           modifiers: ['private'],
           format: ['camelCase'],
-          leadingUnderscore: 'require', // Privadas con _
+          leadingUnderscore: 'require',
         },
         {
           selector: 'memberLike',
           modifiers: ['public'],
-          format: ['camelCase'], // Públicas camelCase
+          format: ['camelCase'],
         },
       ],
+
       '@typescript-eslint/explicit-member-accessibility': [
         'error',
-        { accessibility: 'explicit' }, // Todos los miembros deben declarar public/private
+        { accessibility: 'explicit' },
       ],
 
-      // Orden de miembros en clases
+      // =========================
+      // Member ordering (Signals friendly)
+      // =========================
       '@typescript-eslint/member-ordering': [
-        'error',
-        {
-          default: ['private-field', 'public-field', 'constructor', 'private-method', 'public-method'],
-        },
-      ],
+  'error',
+  {
+    default: [
+      'signature',
 
-      // Angular OnPush
-      //'@angular-eslint/prefer-on-push-component-change-detection': 'error',
+      // 🔹 Static fields
+      'public-static-field',
+      'protected-static-field',
+      'private-static-field',
 
-      // Orden de imports
+      // 🔹 Instance fields (NO se separan por visibilidad)
+      'instance-field',
+
+      // 🔹 Constructor
+      'constructor',
+
+      // 🔹 Methods
+      'public-instance-method',
+      'protected-instance-method',
+      'private-instance-method',
+    ],
+  },
+],
+
+      // =========================
+      // Imports
+      // =========================
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
 
-      // Import plugin
       'import/no-duplicates': 'error',
       'import/newline-after-import': 'error',
 
-      // Unused imports
+      // =========================
+      // Dead code
+      // =========================
       'unused-imports/no-unused-imports': 'error',
     },
   },
 
-  // Configuración para HTML / templates Angular
+  // ==================================================
+  // 🔹 Angular templates
+  // ==================================================
   {
     files: ['**/*.html'],
     extends: [
-      ...angularEslint.configs.templateRecommended, // Reglas templates Angular
-      ...angularEslint.configs.templateAccessibility, // Accesibilidad
+      ...angularEslint.configs.templateRecommended,
+      ...angularEslint.configs.templateAccessibility,
     ],
-    rules: {
-      // Reglas específicas de templates opcionales
-    },
+    rules: {},
   },
 );

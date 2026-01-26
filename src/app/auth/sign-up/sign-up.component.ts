@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { material_modules } from '@core/providers/material.provider';
 import { AuthService } from '@services/auth.service';
 import { AuthError } from '@supabase/supabase-js';
 
@@ -13,10 +12,10 @@ interface SignUpForm {
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [material_modules, ReactiveFormsModule, RouterLink],
+  imports: [ReactiveFormsModule, RouterLink],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class SignUpComponent {
   private readonly _formBuilder = inject(FormBuilder);
@@ -37,7 +36,7 @@ export default class SignUpComponent {
 
     try {
       const { email, password } = this.signUpForm.getRawValue();
-      
+
       const { data, error } = await this._authService.signUp({ email, password });
 
       if (error) throw error;
@@ -48,12 +47,11 @@ export default class SignUpComponent {
       } else {
         this._router.navigateByUrl('/');
       }
-
     } catch (error: unknown) {
       let message = 'Error inesperado';
       if (error instanceof AuthError) message = error.message;
       else if (error instanceof Error) message = error.message;
-      
+
       console.error('[SignUpComponent]:', message);
     } finally {
       this.isLoading.set(false);

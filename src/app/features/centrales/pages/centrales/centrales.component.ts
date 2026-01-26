@@ -1,6 +1,5 @@
-
 import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
-import { RouterModule,RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 import { CentralesService } from '../../../../core/services/centrales.service';
 
@@ -13,16 +12,13 @@ import { CentralesService } from '../../../../core/services/centrales.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CentralesComponent {
-
-    // 🔹 Servicio inyectado
+  // 🔹 Servicio inyectado
   private readonly _centralesService = inject(CentralesService);
-  
+
   // 🔹 Effect de inicialización
   private readonly _initEffect = effect(() => {
     this._centralesService.loadCentrales();
   });
-
-
 
   // 🔹 Señales públicas
   public readonly centrales = this._centralesService.centrales;

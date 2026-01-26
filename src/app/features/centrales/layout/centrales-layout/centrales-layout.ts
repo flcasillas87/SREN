@@ -7,6 +7,4 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   templateUrl: './centrales-layout.html',
   styleUrl: './centrales-layout.scss',
 })
-export class CentralesLayout {
-
-}
+export class CentralesLayout {}
