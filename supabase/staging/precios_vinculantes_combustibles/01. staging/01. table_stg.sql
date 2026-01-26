@@ -5,6 +5,7 @@
 -- =========================================================
 drop table if exists staging.stg_precios_vinculantes_combustibles cascade;
 create table staging.stg_precios_vinculantes_combustibles (
+    batch_id uuid not null default gen_random_uuid(),
     fecha text,
     nombre_combustible text,
     nombre_unidad_medida text,
@@ -12,7 +13,7 @@ create table staging.stg_precios_vinculantes_combustibles (
     precio_vinculante_combustibles text,
     fuente text,
     observaciones text,
-    -- Metadatos ETL
     archivo_origen text,
-    fecha_carga timestamp default (now() at time zone 'America/Monterrey')
+    fecha_carga timestamp default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid default auth.uid()
 );

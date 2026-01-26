@@ -1,7 +1,0 @@
--- Combustibles no mapeados
-select distinct nombre_combustible
-from staging.stg_precios_vinculantes_combustibles
-where upper(trim(nombre_combustible)) not in (
-    select upper(trim(nombre))
-    from datos_maestros.cat_combustibles
-);
