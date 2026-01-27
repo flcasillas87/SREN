@@ -14,10 +14,8 @@ select
     p.precio_vinculante_combustibles,
     p.fuente
 from transform.prep_precios_vinculantes_combustibles p
-where p.batch_id = '3f8c2a9e-4b12-4f8a-9c31-8d2a5e9c1234'  -- <-- aquí tu batch real
+where p.batch_id = '8bb3cef1-dc85-4c9f-8f5a-740fd7556f22'  -- <-- aquí tu batch real
 on conflict (fecha, id_combustible, id_central_generacion)
 do update set
     precio_vinculante_combustibles = excluded.precio_vinculante_combustibles,
     updated_at = (now() at time zone 'America/Monterrey');
-
-
