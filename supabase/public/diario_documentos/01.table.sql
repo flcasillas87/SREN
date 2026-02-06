@@ -17,7 +17,7 @@ CREATE TABLE
         -- Datos del Proveedor y Contrato
         proveedor TEXT NOT NULL,
         rfc_proveedor TEXT,
-        lugar_servicio_id UUID REFERENCES public.cat_lugares_servicio (id),
+        lugar_servicio_id UUID REFERENCES datos_maestros.cat_lugares_servicio (id),
         numero_contrato TEXT,
         nombre_contrato TEXT,
         plurianual TEXT,
@@ -46,10 +46,5 @@ CREATE TABLE
         comentarios TEXT
     );
 
--- Índices para optimizar velocidad de reportes
-CREATE INDEX idx_diario_lugar ON public.diario_documentos (lugar_servicio_id);
-CREATE INDEX idx_diario_fecha_factura ON public.diario_documentos (fecha_factura);
-CREATE INDEX idx_diario_tipo_entrega ON public.diario_documentos (tipo_entrega);
-CREATE INDEX idx_diario_proveedor ON public.diario_documentos (proveedor);
-CREATE INDEX idx_diario_folio_sap ON public.diario_documentos (numero_documento_pasivo);
+
 COMMENT ON TABLE public.diario_documentos IS 'Tabla maestra consolidada: Maneja trazabilidad de moneda original vs liquidación en pesos.';
