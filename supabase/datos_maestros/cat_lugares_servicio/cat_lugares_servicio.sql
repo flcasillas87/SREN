@@ -1,6 +1,7 @@
 -- =========================================================
--- Esquema: 
--- Tabla: 
+-- Esquema: datos_maestros
+-- Tabla: datos_maestros.cat_lugares_servicio
+-- Objetivo: Catálogo de lugares de servicio (México, USA) 
 -- =========================================================
 DROP TABLE IF EXISTS datos_maestros.cat_lugares_servicio;
 CREATE TABLE datos_maestros.cat_lugares_servicio (

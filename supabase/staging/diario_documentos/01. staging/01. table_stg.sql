@@ -1,3 +1,7 @@
+----------------------------------------------------------------                                                            -
+-- Table: staging.stg_diario_documentos--------------------------------------------------------------------------------------
+-- Description: Tabla staging para carga inicial y validaciones antes de mover a la tabla final en public.diario_documentos.-
+-----------------------------------------------------------------------------------------------------------------------------
 DROP TABLE IF EXISTS staging.stg_diario_documentos CASCADE;
 
 CREATE TABLE
