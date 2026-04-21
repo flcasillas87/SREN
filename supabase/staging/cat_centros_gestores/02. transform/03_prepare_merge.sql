@@ -1,0 +1,26 @@
+-- =========================================================
+-- Esquema: staging
+-- Tabla: cat_centros_gestores
+-- Archivo: 03_prepare_merge.sql
+-- Descripción: Prepara registros validos para merge
+-- =========================================================
+
+drop table if exists staging.cat_centros_gestores_ready;
+
+create table staging.cat_centros_gestores_ready as
+select
+  n.source_row,
+  n.codigo,
+  n.nombre,
+  case
+    when n.sociedad_id_raw is null then null
+    else n.sociedad_id_raw::uuid
+  end as sociedad_id,
+
+  coalesce(n.activo, true) as activo
+from staging.cat_centros_gestores_normalized n
+where not exists (
+  select 1
+  from staging.vw_cat_centros_gestores_validation_errors e
+  where e.source_row = n.source_row
+);

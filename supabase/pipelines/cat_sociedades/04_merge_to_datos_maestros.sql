@@ -1,0 +1,6 @@
+-- =========================================================
+-- Pipeline: cat_sociedades
+-- Archivo: 04_merge_to_datos_maestros.sql
+-- Origen: staging.cat_sociedades
+-- Destino: datos_maestros.cat_sociedades
+-- =========================================================

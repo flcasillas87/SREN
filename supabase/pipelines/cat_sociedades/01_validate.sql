@@ -1,0 +1,6 @@
+-- =========================================================
+-- Pipeline: cat_sociedades
+-- Archivo: 01_validate.sql
+-- Origen: staging.cat_sociedades
+-- Destino: datos_maestros.cat_sociedades
+-- =========================================================

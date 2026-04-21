@@ -1,0 +1,6 @@
+-- =========================================================
+-- Pipeline: cat_sociedades
+-- Archivo: 02_normalize.sql
+-- Origen: staging.cat_sociedades
+-- Destino: datos_maestros.cat_sociedades
+-- =========================================================
