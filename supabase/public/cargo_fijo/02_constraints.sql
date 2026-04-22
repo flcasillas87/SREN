@@ -14,8 +14,7 @@ alter table public.cargo_fijo
     drop constraint if exists chk_cf_reserva,
     drop constraint if exists chk_cf_tarifa,
     drop constraint if exists chk_cf_moneda_tarifa,
-    drop constraint if exists chk_cf_usppi_positivos,
-    drop constraint if exists chk_cf_usppi_par;
+    drop constraint if exists chk_cf_unidad_obligatoria;
 
 alter table public.cargo_fijo
     add constraint cargo_fijo_factura_uq unique (id_factura);
@@ -42,11 +41,11 @@ alter table public.cargo_fijo
 
 alter table public.cargo_fijo
     add constraint chk_cf_reserva_total
-    check (reserva_capacidad_gj is null or reserva_capacidad_gj > 0);
+    check (reserva_capacidad is null or reserva_capacidad > 0);
 
 alter table public.cargo_fijo
     add constraint chk_cf_reserva
-    check (reserva_diaria_gj > 0);
+    check (reserva_diaria > 0);
 
 alter table public.cargo_fijo
     add constraint chk_cf_tarifa
@@ -57,15 +56,5 @@ alter table public.cargo_fijo
     check (btrim(moneda_tarifa) <> '');
 
 alter table public.cargo_fijo
-    add constraint chk_cf_usppi_positivos
-    check (
-        (usppi_o is null or usppi_o > 0)
-        and (usppi_m is null or usppi_m > 0)
-    );
-
-alter table public.cargo_fijo
-    add constraint chk_cf_usppi_par
-    check (
-        (usppi_o is null and usppi_m is null)
-        or (usppi_o is not null and usppi_m is not null)
-    );
+    add constraint chk_cf_unidad_obligatoria
+    check (id_unidad_medida is not null);

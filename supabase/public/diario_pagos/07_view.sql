@@ -1,0 +1,26 @@
+-- =========================================================
+-- Esquema: public
+-- Tabla: diario_pagos
+-- Archivo: 07_view.sql
+-- =========================================================
+
+create or replace view public.vw_diario_pagos as
+select
+    p.id,
+    p.documento_id,
+    p.fecha_pago,
+    p.documento_pago_sap,
+    p.moneda_pago,
+    m.descripcion as moneda_pago_descripcion,
+    p.monto_pagado_moneda_pago,
+    p.tc_pago,
+    p.total_pagado_mxn,
+    p.comentarios,
+    p.created_at,
+    p.updated_at
+from public.diario_pagos p
+left join datos_maestros.cat_monedas m
+    on p.moneda_pago = m.codigo;
+
+comment on view public.vw_diario_pagos
+    is 'Vista de pagos del diario con descripcion de moneda para consumo en reportes y Power BI.';
