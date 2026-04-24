@@ -7,7 +7,7 @@
 comment on table public.diario_pagos
     is 'Registro de pagos realizados sobre documentos del diario contable.';
 
-comment on column public.diario_pagos.documento_id
+comment on column public.diario_pagos.id_documento
     is 'Documento contable origen al que corresponde el pago.';
 
 comment on column public.diario_pagos.fecha_pago

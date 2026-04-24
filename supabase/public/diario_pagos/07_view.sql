@@ -6,8 +6,8 @@
 
 create or replace view public.vw_diario_pagos as
 select
-    p.id,
-    p.documento_id,
+    p.id_diario_pago,
+    p.id_documento,
     p.fecha_pago,
     p.documento_pago_sap,
     p.moneda_pago,
