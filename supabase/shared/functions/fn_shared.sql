@@ -10,6 +10,18 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- =============================================================================
+-- Función: public.set_updated_at_mx()
+-- Compatibilidad con triggers antiguos y nuevos
+-- =============================================================================
+CREATE OR REPLACE FUNCTION public.set_updated_at_mx()
+RETURNS trigger AS $$
+BEGIN
+    NEW.updated_at = NOW() AT TIME ZONE 'America/Monterrey';
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- =============================================================================
 -- Función: public.fn_set_created_at_mx()
 -- =============================================================================
 CREATE OR REPLACE FUNCTION public.fn_set_created_at_mx() 

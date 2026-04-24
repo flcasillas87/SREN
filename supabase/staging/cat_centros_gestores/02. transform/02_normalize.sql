@@ -1,16 +1,16 @@
 -- =========================================================
 -- Esquema: staging
--- Tabla: cat_centros_gestores
+-- Tabla: stg_cat_centros_gestores_normalized
 -- Archivo: 02_normalize.sql
 -- Descripción: Normaliza datos de staging
 -- =========================================================
 
-drop table if exists staging.cat_centros_gestores_normalized;
+drop table if exists staging.stg_cat_centros_gestores_normalized;
 
-create table staging.cat_centros_gestores_normalized as
+create table staging.stg_cat_centros_gestores_normalized as
 with src as (
   select
-    row_number() over () as source_row,
+    id_stg_centro_gestor as source_row,
     codigo,
     nombre,
     sociedad_id,
@@ -19,7 +19,7 @@ with src as (
     archivo_origen,
     fecha_carga,
     usuario_carga
-  from staging.cat_centros_gestores
+  from staging.stg_cat_centros_gestores
 )
 select
   source_row,

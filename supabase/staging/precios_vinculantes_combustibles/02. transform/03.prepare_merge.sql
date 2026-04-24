@@ -1,13 +1,13 @@
 -- =========================================================
 -- Esquema: staging
--- Tabla: precios_vinculantes_combustibles_ready
+-- Tabla: stg_precios_vinculantes_combustibles_ready
 -- Archivo: 03.prepare_merge.sql
 -- Descripcion: Resuelve IDs de catalogos y deja solo registros validos
 -- =========================================================
 
-drop table if exists staging.precios_vinculantes_combustibles_ready;
+drop table if exists staging.stg_precios_vinculantes_combustibles_ready;
 
-create table staging.precios_vinculantes_combustibles_ready as
+create table staging.stg_precios_vinculantes_combustibles_ready as
 select
     n.source_row,
     n.batch_id,
@@ -21,7 +21,7 @@ select
     n.archivo_origen as archivo_origen,
     n.fecha_carga as fecha_carga,
     n.usuario_carga as usuario_carga
-from staging.precios_vinculantes_combustibles_normalized n
+from staging.stg_precios_vinculantes_combustibles_normalized n
 join datos_maestros.cat_combustibles c
   on upper(btrim(c.nombre_combustible)) = n.nombre_combustible
 join datos_maestros.cat_unidades_medida u

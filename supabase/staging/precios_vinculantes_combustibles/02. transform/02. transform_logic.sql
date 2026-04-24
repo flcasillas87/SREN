@@ -1,13 +1,13 @@
 -- =========================================================
 -- Esquema: staging
--- Tabla: stg_precios_vinculantes_combustibles
+-- Tabla: stg_precios_vinculantes_combustibles_normalized
 -- Archivo: 02.transform_logic.sql
 -- Descripcion: Normaliza datos de staging para preparar el merge
 -- =========================================================
 
-drop table if exists staging.precios_vinculantes_combustibles_normalized;
+drop table if exists staging.stg_precios_vinculantes_combustibles_normalized;
 
-create table staging.precios_vinculantes_combustibles_normalized as
+create table staging.stg_precios_vinculantes_combustibles_normalized as
 with src as (
     select
         id_stg_precio_vinculante_combustible as source_row,

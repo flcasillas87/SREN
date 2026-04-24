@@ -4,6 +4,8 @@
 -- Objetivo: Orquestar validacion, normalizacion, merge y limpieza
 -- =========================================================
 
+create schema if not exists etl;
+
 create or replace procedure etl.pr_load_precios_vinculantes_combustibles()
 language plpgsql
 as $$

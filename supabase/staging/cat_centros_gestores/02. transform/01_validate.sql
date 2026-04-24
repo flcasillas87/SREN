@@ -1,6 +1,6 @@
 -- =========================================================
 -- Esquema: staging
--- Tabla: cat_centros_gestores
+-- Tabla: stg_cat_centros_gestores
 -- Archivo: 01_validate.sql
 -- Descripción: Valida datos cargados desde CSV
 -- =========================================================
@@ -10,12 +10,12 @@ drop view if exists staging.vw_cat_centros_gestores_validation_errors;
 create view staging.vw_cat_centros_gestores_validation_errors as
 with src as (
   select
-    row_number() over () as source_row,
+    id_stg_centro_gestor as source_row,
     codigo,
     nombre,
     sociedad_id,
     activo
-  from staging.cat_centros_gestores
+  from staging.stg_cat_centros_gestores
 ),
 duplicados as (
   select

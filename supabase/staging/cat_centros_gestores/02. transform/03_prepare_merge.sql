@@ -1,13 +1,13 @@
 -- =========================================================
 -- Esquema: staging
--- Tabla: cat_centros_gestores
+-- Tabla: stg_cat_centros_gestores_ready
 -- Archivo: 03_prepare_merge.sql
 -- Descripción: Prepara registros validos para merge
 -- =========================================================
 
-drop table if exists staging.cat_centros_gestores_ready;
+drop table if exists staging.stg_cat_centros_gestores_ready;
 
-create table staging.cat_centros_gestores_ready as
+create table staging.stg_cat_centros_gestores_ready as
 select
   n.source_row,
   n.codigo,
@@ -21,7 +21,7 @@ select
   n.archivo_origen as archivo_origen,
   n.fecha_carga as fecha_carga,
   n.usuario_carga as usuario_carga
-from staging.cat_centros_gestores_normalized n
+from staging.stg_cat_centros_gestores_normalized n
 where not exists (
   select 1
   from staging.vw_cat_centros_gestores_validation_errors e
