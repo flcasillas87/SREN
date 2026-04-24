@@ -10,9 +10,7 @@ drop view if exists staging.vw_precios_vinculantes_combustibles_validation_error
 create view staging.vw_precios_vinculantes_combustibles_validation_errors as
 with src as (
     select
-        row_number() over (
-            order by fecha_carga, archivo_origen, fecha, nombre_combustible, nombre_central
-        ) as source_row,
+        id_stg_precio_vinculante_combustible as source_row,
         batch_id,
         fecha,
         nombre_combustible,

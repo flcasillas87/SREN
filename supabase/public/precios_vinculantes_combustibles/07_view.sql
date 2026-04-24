@@ -1,9 +1,9 @@
 -- =============================================================================
--- VISTA: v_dashboard_precios_vinculantes_combustibles
+-- VISTA: vw_dashboard_precios_vinculantes_combustibles
 -- USO : Power BI - precios vinculantes de combustibles
 -- =============================================================================
 
-create or replace view public.v_dashboard_precios_vinculantes_combustibles as
+create or replace view public.vw_dashboard_precios_vinculantes_combustibles as
 select
     p.fecha,
     c.nombre_combustible as combustible,

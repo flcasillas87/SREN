@@ -10,9 +10,7 @@ drop table if exists staging.precios_vinculantes_combustibles_normalized;
 create table staging.precios_vinculantes_combustibles_normalized as
 with src as (
     select
-        row_number() over (
-            order by fecha_carga, archivo_origen, fecha, nombre_combustible, nombre_central
-        ) as source_row,
+        id_stg_precio_vinculante_combustible as source_row,
         batch_id,
         fecha,
         nombre_combustible,

@@ -1,4 +1,1 @@
-truncate table staging.stg_precios_vinculantes_combustibles;
-
-drop table if exists staging.precios_vinculantes_combustibles_normalized;
-drop table if exists staging.precios_vinculantes_combustibles_ready;
+-- Limpieza manejada por etl.pr_load_precios_vinculantes_combustibles()
