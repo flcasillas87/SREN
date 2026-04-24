@@ -18,6 +18,10 @@ CREATE TABLE datos_maestros.cat_gasoductos (
 	es_activo bool DEFAULT true NULL,
 	created_at timestamp DEFAULT now() NULL,
 	updated_at timestamp NULL,
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
 	CONSTRAINT cat_gasoductos_codigo_key UNIQUE (codigo),
 	CONSTRAINT cat_gasoductos_pkey PRIMARY KEY (id_gasoducto)
 );

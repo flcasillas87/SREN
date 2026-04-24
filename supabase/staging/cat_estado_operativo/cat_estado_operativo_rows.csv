@@ -1,0 +1,6 @@
+id_estado,estado,descripcion,es_activo,created_at,updated_at
+1,Operativo,La central se encuentra en operación normal inyectando a la red.,true,2026-01-15 17:42:26.997801,2026-01-15 17:42:26.997801
+2,En Mantenimiento,La central está en periodo de pruebas de puesta en servicio.,true,2026-01-15 17:42:26.997801,2026-01-15 17:42:26.997801
+3,Fuera de Servicio,La central no está disponible para generar por mantenimiento o falla.,true,2026-01-15 17:42:26.997801,2026-01-15 17:42:26.997801
+4,En Pruebas,La central está en periodo de pruebas de puesta en servicio.,true,2026-01-15 17:42:26.997801,2026-01-15 17:42:26.997801
+5,Desconocido,El estado operativo de la central no está definido o es desconocido.,true,2026-01-15 17:42:26.997801,2026-01-15 17:42:26.997801

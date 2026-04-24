@@ -1,8 +1,8 @@
 DROP TABLE IF EXISTS public.diario_detalles_operativos CASCADE;
 
 CREATE TABLE public.diario_detalles_operativos (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    documento_id UUID REFERENCES public.diario_documentos(id) ON DELETE CASCADE,
+    id_diario_detalle_operativo UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id_documento UUID REFERENCES public.diario_documentos(id_documento) ON DELETE CASCADE,
     
     -- FECHAS OPERATIVAS (El "Devengo" del costo)
     -- Estas pueden ser distintas a la fecha de factura
@@ -25,7 +25,11 @@ CREATE TABLE public.diario_detalles_operativos (
     
     -- Clasificación Contable
     centro_costos TEXT,
-    cuenta_contable TEXT
+    cuenta_contable TEXT,
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid()
 );
 
 CREATE INDEX idx_det_fecha_servicio ON public.diario_detalles_operativos(fecha_servicio_inicio);

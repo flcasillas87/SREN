@@ -19,6 +19,9 @@ create table public.precios_vinculantes_combustibles (
     created_by uuid references auth.users(id) default auth.uid(),
 
     -- Llaves y restricciones    
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
     constraint precios_vinculantes_combustibles_pkey primary key (id_precio_vinculante_combustible),
     constraint uq_precio_fecha_combustible_central unique(fecha, id_combustible, id_central_generacion)
 ) tablespace pg_default;
@@ -32,6 +35,10 @@ create table public.audit_precios_vinculantes_combustibles (
     precio_nuevo numeric(15, 4),
     usuario_cambio uuid,
     fecha_cambio timestamp default (now() at time zone 'America/Monterrey'),
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
     constraint audit_pv_id_precio_fkey
       foreign key (id_precio_vinculante_combustible)
       references public.precios_vinculantes_combustibles(id_precio_vinculante_combustible)

@@ -13,6 +13,10 @@ create table datos_maestros.cat_unidades_medida (
   created_at timestamp null default (now() at time zone 'America/Monterrey'),
   updated_at timestamp null default (now() at time zone 'America/Monterrey'),
   -- Índices y restricciones
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
   constraint cat_unidades_medida_pkey primary key (id_unidad_medida),
   constraint cat_unidades_medida_codigo_key unique (codigo),
   constraint fk_cat_unidades_medida_combustible foreign key (id_combustible) references datos_maestros.cat_combustibles (id_combustible) on delete restrict

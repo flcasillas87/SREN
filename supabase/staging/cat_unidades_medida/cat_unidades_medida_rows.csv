@@ -1,0 +1,6 @@
+id_unidad_medida,codigo,descripcion,factor_conversion_mbtu,id_combustible,es_activo,created_at,updated_at
+1,MMBtu,Millón de Unidades Térmicas Británicas,1.00000000,1,true,2026-01-16 12:20:28.637449,2026-01-16 12:20:28.637449
+2,GJ,Giga Joule (0.9478 MMBtu),0.94781712,1,true,2026-01-16 12:20:28.637449,2026-01-16 12:20:28.637449
+3,Litro,Litro de Diesel,0.03600000,2,true,2026-01-16 12:20:28.637449,2026-01-16 12:20:28.637449
+4,m3,Metro cúbico de Diesel,36.00000000,2,true,2026-01-16 12:20:28.637449,2026-01-16 12:20:28.637449
+5,Barril,Barril de 42 galones,6.28700000,3,true,2026-01-16 12:20:28.637449,2026-01-16 12:20:28.637449

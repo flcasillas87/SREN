@@ -14,7 +14,11 @@ with src as (
     codigo,
     nombre,
     sociedad_id,
-    activo
+    activo,
+    observaciones,
+    archivo_origen,
+    fecha_carga,
+    usuario_carga
   from staging.cat_centros_gestores
 )
 select
@@ -22,6 +26,10 @@ select
   upper(btrim(codigo)) as codigo,
   btrim(nombre) as nombre,
   nullif(btrim(sociedad_id), '') as sociedad_id_raw,
+  nullif(btrim(observaciones), '') as observaciones,
+  nullif(btrim(archivo_origen), '') as archivo_origen,
+  fecha_carga,
+  usuario_carga,
 
   case
     when nullif(btrim(activo), '') is null then true

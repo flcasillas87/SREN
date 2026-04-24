@@ -1,21 +1,35 @@
+-- =========================================================
+-- Esquema: public
+-- Tabla: precios_vinculantes_combustibles
+-- Archivo: 01.merge.sql
+-- Descripcion: Inserta o actualiza precios vinculantes desde staging
+-- =========================================================
+
 insert into public.precios_vinculantes_combustibles (
-    id_central_generacion,
+    fecha,
     id_combustible,
     id_unidad_medida,
-    fecha,
+    id_central_generacion,
     precio_vinculante_combustibles,
-    fuente
+    fuente,
+    observaciones,
+    es_activo
 )
 select
-    p.id_central_generacion,
-    p.id_combustible,
-    p.id_unidad_medida,
-    p.fecha,
-    p.precio_vinculante_combustibles,
-    p.fuente
-from transform.prep_precios_vinculantes_combustibles p
-where p.batch_id = '8bb3cef1-dc85-4c9f-8f5a-740fd7556f22'  -- <-- aquí tu batch real
-on conflict (fecha, id_combustible, id_central_generacion)
-do update set
+    r.fecha,
+    r.id_combustible,
+    r.id_unidad_medida,
+    r.id_central_generacion,
+    r.precio_vinculante_combustibles,
+    r.fuente,
+    r.observaciones,
+    true
+from staging.precios_vinculantes_combustibles_ready r
+on conflict (fecha, id_combustible, id_central_generacion) do update
+set
+    id_unidad_medida = excluded.id_unidad_medida,
     precio_vinculante_combustibles = excluded.precio_vinculante_combustibles,
+    fuente = excluded.fuente,
+    observaciones = excluded.observaciones,
+    es_activo = true,
     updated_at = (now() at time zone 'America/Monterrey');

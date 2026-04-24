@@ -1,8 +1,18 @@
 -- =========================================================
--- 02b_transform_logic.sql
--- STG → TRF (validación y normalización)
+-- Esquema: staging
+-- Tabla: stg_precios_vinculantes_combustibles
+-- Archivo: 02.transform_logic.sql
+-- Descripcion: Normaliza datos de staging para preparar el merge
 -- =========================================================
-insert into transform.trf_precios_vinculantes_combustibles (
+
+drop table if exists staging.precios_vinculantes_combustibles_normalized;
+
+create table staging.precios_vinculantes_combustibles_normalized as
+with src as (
+    select
+        row_number() over (
+            order by fecha_carga, archivo_origen, fecha, nombre_combustible, nombre_central
+        ) as source_row,
         batch_id,
         fecha,
         nombre_combustible,
@@ -11,41 +21,34 @@ insert into transform.trf_precios_vinculantes_combustibles (
         precio_vinculante_combustibles,
         fuente,
         observaciones,
-        es_valido,
-        error_motivo
-    )
-select s.batch_id,
-    -- Fecha
+        archivo_origen,
+        fecha_carga,
+        usuario_carga
+    from staging.stg_precios_vinculantes_combustibles
+)
+select
+    source_row,
+    batch_id,
     case
-        when s.fecha ~ '^\d{4}-\d{2}-\d{2}$' then to_date(s.fecha, 'YYYY-MM-DD')
+        when nullif(btrim(fecha), '') is null then null
+        when btrim(fecha) ~ '^\d{4}-\d{2}-\d{2}$' then to_date(btrim(fecha), 'YYYY-MM-DD')
+        when btrim(fecha) ~ '^\d{2}/\d{2}/\d{4}$' then to_date(btrim(fecha), 'DD/MM/YYYY')
         else null
     end as fecha,
-    upper(trim(s.nombre_combustible)) as nombre_combustible,
-    upper(trim(s.nombre_unidad_medida)) as nombre_unidad_medida,
-    regexp_replace(upper(trim(s.nombre_central)), '\s+', ' ', 'g') as nombre_central,
-    -- Precio
+    upper(btrim(nombre_combustible)) as nombre_combustible,
+    upper(btrim(nombre_unidad_medida)) as nombre_unidad_medida,
+    regexp_replace(upper(btrim(nombre_central)), '\s+', ' ', 'g') as nombre_central,
     case
-        when replace(s.precio_vinculante_combustibles, ',', '') ~ '^[0-9]+(\.[0-9]+)?$' then replace(s.precio_vinculante_combustibles, ',', '')::numeric
+        when nullif(
+            replace(replace(replace(btrim(precio_vinculante_combustibles), ',', ''), '$', ''), ' ', ''),
+            ''
+        ) ~ '^-?\d+(\.\d+)?$'
+        then replace(replace(replace(btrim(precio_vinculante_combustibles), ',', ''), '$', ''), ' ', '')::numeric(15, 4)
         else null
     end as precio_vinculante_combustibles,
-    coalesce(s.fuente, 'Carga_Manual_' || current_date) as fuente,
-    s.observaciones,
-    -- Validación global
-    case
-        when s.fecha ~ '^\d{4}-\d{2}-\d{2}$'
-        and replace(s.precio_vinculante_combustibles, ',', '') ~ '^[0-9]+(\.[0-9]+)?$'
-        and s.nombre_combustible is not null
-        and s.nombre_unidad_medida is not null
-        and s.nombre_central is not null then true
-        else false
-    end as es_valido,
-    -- Motivo de error
-    case
-        when s.fecha !~ '^\d{4}-\d{2}-\d{2}$' then 'Fecha inválida'
-        when replace(s.precio_vinculante_combustibles, ',', '') !~ '^[0-9]+(\.[0-9]+)?$' then 'Precio inválido'
-        when s.nombre_combustible is null then 'Combustible nulo'
-        when s.nombre_unidad_medida is null then 'Unidad medida nula'
-        when s.nombre_central is null then 'Central nula'
-        else null
-    end as error_motivo
-from staging.stg_precios_vinculantes_combustibles s;
+    coalesce(nullif(btrim(fuente), ''), 'csv_import') as fuente,
+    nullif(btrim(observaciones), '') as observaciones,
+    nullif(btrim(archivo_origen), '') as archivo_origen,
+    fecha_carga,
+    usuario_carga
+from src;

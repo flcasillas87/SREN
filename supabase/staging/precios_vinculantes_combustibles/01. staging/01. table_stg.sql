@@ -5,6 +5,7 @@
 -- =========================================================
 drop table if exists staging.stg_precios_vinculantes_combustibles cascade;
 create table staging.stg_precios_vinculantes_combustibles (
+    id_stg_precio_vinculante_combustible bigserial primary key,
     batch_id uuid not null default gen_random_uuid(),
     fecha text,
     nombre_combustible text,

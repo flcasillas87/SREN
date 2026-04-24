@@ -19,6 +19,10 @@ CREATE TABLE fact_precio_vinculante (
     activo BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMPTZ DEFAULT now(),
 
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
     CONSTRAINT chk_fechas_vigencia
         CHECK (fecha_fin_vigencia >= fecha_inicio_vigencia)
 );

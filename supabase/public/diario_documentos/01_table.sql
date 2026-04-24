@@ -6,7 +6,7 @@
 DROP TABLE IF EXISTS public.diario_documentos CASCADE;
 CREATE TABLE public.diario_documentos (
     -- Identificadores y Trazabilidad
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid (),
+    id_documento UUID PRIMARY KEY DEFAULT gen_random_uuid (),
     created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
     archivo_origen TEXT,
     -- Estructura Organizativa SAP
@@ -20,7 +20,7 @@ CREATE TABLE public.diario_documentos (
     -- Datos del Proveedor y Contrato
     proveedor TEXT NOT NULL,
     rfc_proveedor TEXT,
-    lugar_servicio_id UUID REFERENCES datos_maestros.cat_lugares_servicio (id),
+    id_lugar_servicio UUID REFERENCES datos_maestros.cat_lugares_servicio (id_lugar_servicio),
     numero_contrato TEXT,
     nombre_contrato TEXT,
     plurianual TEXT,
@@ -51,6 +51,9 @@ CREATE TABLE public.diario_documentos (
     -- Total de la deuda
     -- Control
     reviso TEXT,
-    comentarios TEXT
+    comentarios TEXT,
+    observaciones text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid()
 );
 COMMENT ON TABLE public.diario_documentos IS 'Tabla maestra consolidada: Maneja trazabilidad de moneda original vs liquidación en pesos.';

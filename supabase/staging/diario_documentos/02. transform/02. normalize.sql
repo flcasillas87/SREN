@@ -5,7 +5,8 @@
 
 CREATE OR REPLACE VIEW staging.vw_normalize_diario_documentos AS
 SELECT 
-    import_id,
+    id_stg_diario_documento,
+    batch_id,
     -- Limpieza de Cadenas
     UPPER(TRIM(sociedad_sap)) AS sociedad_sap,
     UPPER(TRIM(proveedor)) AS proveedor,

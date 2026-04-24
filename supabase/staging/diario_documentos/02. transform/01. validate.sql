@@ -5,10 +5,10 @@
 
 CREATE OR REPLACE VIEW staging.vw_validate_diario_documentos AS
 SELECT 
-    import_id,
+    id_stg_diario_documento,
     -- Validación de Lugar de Servicio (Debe existir en nuestro catálogo)
     CASE 
-        WHEN l.id IS NULL THEN 'ERROR: Lugar de servicio (país) no reconocido'
+        WHEN l.id_lugar_servicio IS NULL THEN 'ERROR: Lugar de servicio (país) no reconocido'
         ELSE 'OK'
     END AS v_lugar_servicio,
     

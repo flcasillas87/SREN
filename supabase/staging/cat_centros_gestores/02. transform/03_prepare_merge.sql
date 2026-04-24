@@ -14,10 +14,13 @@ select
   n.nombre,
   case
     when n.sociedad_id_raw is null then null
-    else n.sociedad_id_raw::uuid
+  else n.sociedad_id_raw::uuid
   end as sociedad_id,
-
-  coalesce(n.activo, true) as activo
+  coalesce(n.activo, true) as activo,
+  n.observaciones as observaciones,
+  n.archivo_origen as archivo_origen,
+  n.fecha_carga as fecha_carga,
+  n.usuario_carga as usuario_carga
 from staging.cat_centros_gestores_normalized n
 where not exists (
   select 1

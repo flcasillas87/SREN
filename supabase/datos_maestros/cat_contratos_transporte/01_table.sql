@@ -24,6 +24,10 @@ CREATE TABLE datos_maestros.cat_contratos_transporte (
     created_at timestamptz DEFAULT now(),
     updated_at timestamptz DEFAULT now(),
 
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
     CONSTRAINT cat_contratos_transporte_pkey PRIMARY KEY (id_contrato),
     CONSTRAINT cat_contratos_transporte_nombre_key UNIQUE (nombre_contrato),
     

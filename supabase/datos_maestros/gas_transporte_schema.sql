@@ -19,6 +19,10 @@ CREATE TABLE cat_proveedor (
     moneda_default      CHAR(3)         DEFAULT 'USD',   -- USD | MXN
     activo              BOOLEAN         DEFAULT TRUE,
     created_at          TIMESTAMP       DEFAULT CURRENT_TIMESTAMP,
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
     CONSTRAINT chk_moneda_default CHECK (moneda_default IN ('USD','MXN'))
 );
 
@@ -38,6 +42,10 @@ CREATE TABLE cat_contrato (
     plurianual          BOOLEAN         DEFAULT FALSE,
     activo              BOOLEAN         DEFAULT TRUE,
     created_at          TIMESTAMP       DEFAULT CURRENT_TIMESTAMP,
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
     CONSTRAINT chk_fechas_contrato CHECK (fecha_fin IS NULL OR fecha_fin > fecha_inicio)
 );
 
@@ -53,7 +61,11 @@ CREATE TABLE cat_centro_gestor (
     pos_pre             VARCHAR(20),                -- posición presupuestal
     cuenta_contable     VARCHAR(20),
     fondo               VARCHAR(20),
-    activo              BOOLEAN         DEFAULT TRUE
+    activo              BOOLEAN         DEFAULT TRUE,
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid()
 );
 
 COMMENT ON TABLE cat_centro_gestor IS 'Centros gestores SAP (unidades presupuestales)';
@@ -118,6 +130,10 @@ CREATE TABLE factura_pago (
     created_at          TIMESTAMP       DEFAULT CURRENT_TIMESTAMP,
     updated_at          TIMESTAMP       DEFAULT CURRENT_TIMESTAMP,
 
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
     CONSTRAINT chk_moneda          CHECK (moneda IN ('USD','MXN','EUR')),
     CONSTRAINT chk_periodo_pago    CHECK (periodo_pago    BETWEEN 1 AND 12),
     CONSTRAINT chk_periodo_svc     CHECK (periodo_servicio BETWEEN 1 AND 12),
@@ -172,7 +188,11 @@ CREATE TABLE cargo_fijo (
     conciliado              BOOLEAN         DEFAULT FALSE,
     diferencia_importe      NUMERIC(18,6),           -- llenado por proceso de validación
     notas                   TEXT,
-    created_at              TIMESTAMP       DEFAULT CURRENT_TIMESTAMP
+    created_at              TIMESTAMP       DEFAULT CURRENT_TIMESTAMP,
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid()
 );
 
 COMMENT ON TABLE cargo_fijo IS
@@ -224,7 +244,11 @@ CREATE TABLE cargo_variable (
     conciliado              BOOLEAN         DEFAULT FALSE,
     diferencia_importe      NUMERIC(18,6),
     notas                   TEXT,
-    created_at              TIMESTAMP       DEFAULT CURRENT_TIMESTAMP
+    created_at              TIMESTAMP       DEFAULT CURRENT_TIMESTAMP,
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid()
 );
 
 COMMENT ON TABLE cargo_variable IS
@@ -270,6 +294,10 @@ CREATE TABLE cargo_interconexion (
     notas                   TEXT,
     created_at              TIMESTAMP       DEFAULT CURRENT_TIMESTAMP,
 
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
     CONSTRAINT chk_tipo_cargo CHECK (
         tipo_cargo IN ('CAPACIDAD','VOLUMETRICO','MIXTO') OR tipo_cargo IS NULL
     )
@@ -319,6 +347,10 @@ CREATE TABLE penalizacion (
     diferencia_importe      NUMERIC(18,6),
     notas                   TEXT,
     created_at              TIMESTAMP       DEFAULT CURRENT_TIMESTAMP,
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
 
     CONSTRAINT pk_pen_linea UNIQUE (id_factura, num_linea)
 );

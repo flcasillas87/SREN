@@ -7,8 +7,8 @@
 drop table if exists public.diario_pagos cascade;
 
 create table public.diario_pagos (
-    id uuid not null default gen_random_uuid(),
-    documento_id uuid not null,
+    id_diario_pago uuid not null default gen_random_uuid(),
+    id_documento uuid not null,
     fecha_pago date not null,
     documento_pago_sap text null,
     moneda_pago varchar(5) not null,
@@ -18,5 +18,9 @@ create table public.diario_pagos (
     comentarios text null,
     created_at timestamp not null default (now() at time zone 'America/Monterrey'),
     updated_at timestamp not null default (now() at time zone 'America/Monterrey'),
-    constraint diario_pagos_pkey primary key (id)
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
+    constraint diario_pagos_pkey primary key (id_diario_pago)
 );

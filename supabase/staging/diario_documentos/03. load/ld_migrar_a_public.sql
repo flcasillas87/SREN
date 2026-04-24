@@ -10,7 +10,7 @@ BEGIN
     -- 1. Insertar datos en la tabla productiva
     INSERT INTO public.diario_documentos (
         sociedad_sap, fondo_sap, centro_gestor_sap, pospre_sap, cuenta_sap, 
-        acreedor_sap, contrato_sap, proveedor, rfc_proveedor, lugar_servicio_id, 
+        acreedor_sap, contrato_sap, proveedor, rfc_proveedor, id_lugar_servicio, 
         numero_contrato, nombre_contrato, plurianual, tipo_entrega, moneda_documento,
         numero_oficio_tramite, fecha_oficio_tramite, numero_factura, fecha_factura,
         periodo_contable, estimado, concepto, importe_moneda_original, 
@@ -20,7 +20,7 @@ BEGIN
     )
     SELECT 
         sociedad_sap, fondo_sap, centro_gestor_sap, pospre_sap, cuenta_sap,
-        acreedor_sap, contrato_sap, proveedor, rfc_proveedor, lugar_servicio_id,
+        acreedor_sap, contrato_sap, proveedor, rfc_proveedor, id_lugar_servicio,
         numero_contrato, nombre_contrato, plurianual, 
         tipo_entrega::public.tipo_entrega, 
         moneda_documento::public.tipo_moneda,

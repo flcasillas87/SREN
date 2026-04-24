@@ -1,0 +1,6 @@
+id_contrato,id_proveedor,moneda_tarifa,id_unidad_medida,plurianual,nombre_contrato,sistema_transporte,capacidad_reservada_diaria,tarifa_reservacion,tarifa_uso,fecha_inicio,fecha_fin,activo,created_at,updated_at
+9865a540-e3ae-48d2-81f6-7d39ff634281,4b1e9c5d-ed6a-4c66-8f8c-31401c04cf23,MXN,1,PLU-SISTRANGAS-2024-2030,Base Sistrangas Principal,SISTRANGAS,5000.0000,0.345678,0.012000,2024-01-01,2030-12-31,true,2026-01-21 18:28:50.323476+00,2026-01-21 18:28:50.323476+00
+9ab8f628-a6ed-4597-b800-2d77e33ba476,1f09e1ea-4a44-4e96-9ce0-41e1219a7ef4,MXN,,,SE-DM-SISA-001-2015,Gasoducto San Isidro - Samalayuca,,,,,,true,2026-01-21 19:41:05.03731+00,2026-01-21 19:41:05.03731+00
+b1b59b49-c730-45d2-8329-d23daef24a56,9cac275b-76fa-424a-b3e1-643e63fa7f3c,MXN,,,SE-CPSTGN-002/2011,Gasoducto Corredor Chihuahua,,,,,,true,2026-01-21 19:41:05.03731+00,2026-01-21 19:41:05.03731+00
+b39ecdb2-4727-4e58-8762-306c37371d67,a165049b-58eb-45fc-a4c5-af7a1d96a7d1,MXN,,,"SE-DM-ENLA-003-2014 ",Gasoducto El Encino - La Laguna,,,,,,true,2026-01-21 19:41:05.03731+00,2026-01-21 19:41:05.03731+00
+f945ed7f-836d-49e7-b032-e80103d2dce9,1f09e1ea-4a44-4e96-9ce0-41e1219a7ef4,MXN,,,"SE-DM-OJEN-001-2014 ",Gasoducto Ojinaga - El Encino,,,,,,true,2026-01-21 19:41:05.03731+00,2026-01-21 19:41:05.03731+00

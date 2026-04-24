@@ -16,6 +16,10 @@ CREATE TABLE datos_maestros.organigrama (
     updated_at timestamptz DEFAULT now(),
 
     -- Llave foránea que apunta a la propia tabla
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
     CONSTRAINT fk_organigrama_superior 
         FOREIGN KEY (id_superior) 
         REFERENCES datos_maestros.organigrama(id_posicion)

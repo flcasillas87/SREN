@@ -1,6 +1,6 @@
 CREATE TABLE public.diario_costos_detalle (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    documento_id UUID REFERENCES public.diario_documentos(id) ON DELETE CASCADE,
+    id_diario_costo_detalle UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    id_documento UUID REFERENCES public.diario_documentos(id_documento) ON DELETE CASCADE,
     
     -- Clasificación del costo
     concepto_costo TEXT, -- Ej: 'Tarifa Base', 'Excedente', 'Refacción X'
@@ -15,5 +15,9 @@ CREATE TABLE public.diario_costos_detalle (
     subtotal_costo_moneda_original NUMERIC(18, 2),
     
     -- Para tu seguimiento de costos en Pesos
-    importe_costo_mxn NUMERIC(18, 2) -- (subtotal * tc_contable_pasivo de la cabecera)
+    importe_costo_mxn NUMERIC(18, 2) -- (subtotal * tc_contable_pasivo de la cabecera),
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid()
 );

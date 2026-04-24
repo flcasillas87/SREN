@@ -14,5 +14,9 @@ create table datos_maestros.cat_centros_gestores (
   updated_at timestamptz not null default now(),
   created_by varchar(50) null,
   updated_by varchar(50) null,
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
   constraint cat_centros_gestores_pkey primary key (id_centro_gestor)
 );

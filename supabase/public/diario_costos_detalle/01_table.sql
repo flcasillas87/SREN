@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS public.estimacion_flujo_transporte (
     
     -- Resultados del Cálculo (Output)
     costo_fijo_estimado_usd numeric(18,2) GENERATED ALWAYS AS (
-        capacidad_reservada_diaria * tarifa_reservacion_unitaria * 30.41 -- Promedio días mes
+        capacidad_reservada_diaria * tarifa_reservacion_unitaria * 30.41
     ) STORED,
     
     costo_variable_estimado_usd numeric(18,2) GENERATED ALWAYS AS (
@@ -34,6 +34,10 @@ CREATE TABLE IF NOT EXISTS public.estimacion_flujo_transporte (
     -- Auditoría y Control
     tipo_cambio_proyectado numeric(12,4), -- FX estimado para presupuesto
     created_at timestamp DEFAULT (now() AT TIME ZONE 'America/Monterrey'),
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
     
     CONSTRAINT pk_estimacion_flujo PRIMARY KEY (id_estimacion),
     CONSTRAINT uk_contrato_periodo UNIQUE (id_contrato, anio, mes)

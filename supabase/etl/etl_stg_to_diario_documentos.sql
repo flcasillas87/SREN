@@ -1,6 +1,6 @@
 INSERT INTO public.diario_documentos (
     sociedad_sap, fondo_sap, centro_gestor_sap, pospre_sap, cuenta_sap, acreedor_sap, contrato_sap,
-    proveedor, rfc_proveedor, lugar_servicio_id, numero_contrato, nombre_contrato,
+    proveedor, rfc_proveedor, id_lugar_servicio, numero_contrato, nombre_contrato,
     plurianual, tipo_entrega, moneda_documento,
     numero_oficio_tramite, fecha_oficio_tramite,
     numero_factura, fecha_factura, periodo_contable, estimado, concepto,
@@ -12,7 +12,12 @@ INSERT INTO public.diario_documentos (
 SELECT 
     sociedad_sap, fondo_sap, centro_gestor_sap, pospre_sap, cuenta_sap, acreedor_sap, contrato_sap,
     proveedor, rfc_proveedor,
-    (SELECT id FROM public.cat_lugares_servicio WHERE nombre = stg.lugar_servicio_nombre LIMIT 1),
+    (
+        SELECT id_lugar_servicio
+        FROM datos_maestros.cat_lugares_servicio
+        WHERE nombre = stg.lugar_servicio_nombre
+        LIMIT 1
+    ),
     numero_contrato, nombre_contrato, plurianual,
     TRIM(LOWER(tipo_entrega))::public.tipo_entrega,
     TRIM(UPPER(moneda_documento))::public.tipo_moneda,

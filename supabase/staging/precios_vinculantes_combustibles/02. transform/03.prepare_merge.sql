@@ -1,20 +1,36 @@
 -- =========================================================
--- PROCESO: Carga de Precios Vinculantes
--- Origen  : staging.stg_precios_vinculantes_combustibles
--- Destino : datos_maestros.precios_vinculantes
+-- Esquema: staging
+-- Tabla: precios_vinculantes_combustibles_ready
+-- Archivo: 03.prepare_merge.sql
+-- Descripcion: Resuelve IDs de catalogos y deja solo registros validos
 -- =========================================================
-drop table if exists transform.prep_precios_vinculantes_combustibles cascade;
-create table transform.prep_precios_vinculantes_combustibles as
-select t.batch_id,
-    c.id_central_generacion,
-    cb.id_combustible,
+
+drop table if exists staging.precios_vinculantes_combustibles_ready;
+
+create table staging.precios_vinculantes_combustibles_ready as
+select
+    n.source_row,
+    n.batch_id,
+    n.fecha,
+    c.id_combustible,
     u.id_unidad_medida,
-    t.fecha,
-    t.precio_vinculante_combustibles,
-    t.fuente,
-    t.observaciones
-from transform.trf_precios_vinculantes_combustibles t
-    join datos_maestros.cat_centrales_generacion c on t.nombre_central = regexp_replace(upper(trim(c.nombre_central)), '\s+', ' ', 'g')
-    join datos_maestros.cat_combustibles cb on t.nombre_combustible = upper(trim(cb.nombre_combustible))
-    join datos_maestros.cat_unidades_medida u on t.nombre_unidad_medida = upper(trim(u.codigo))
-where t.es_valido = true;
+    cg.id_central_generacion,
+    n.precio_vinculante_combustibles,
+    n.fuente,
+    n.observaciones as observaciones,
+    n.archivo_origen as archivo_origen,
+    n.fecha_carga as fecha_carga,
+    n.usuario_carga as usuario_carga
+from staging.precios_vinculantes_combustibles_normalized n
+join datos_maestros.cat_combustibles c
+  on upper(btrim(c.nombre_combustible)) = n.nombre_combustible
+join datos_maestros.cat_unidades_medida u
+  on upper(btrim(u.codigo)) = n.nombre_unidad_medida
+ and u.id_combustible = c.id_combustible
+join datos_maestros.cat_centrales_generacion cg
+  on regexp_replace(upper(btrim(cg.nombre_central)), '\s+', ' ', 'g') = n.nombre_central
+where not exists (
+    select 1
+    from staging.vw_precios_vinculantes_combustibles_validation_errors e
+    where e.source_row = n.source_row
+);

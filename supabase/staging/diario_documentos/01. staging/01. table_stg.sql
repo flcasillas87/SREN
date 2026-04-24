@@ -7,7 +7,8 @@ DROP TABLE IF EXISTS staging.stg_diario_documentos CASCADE;
 CREATE TABLE
     staging.stg_diario_documentos (
         -- Identificadores y Trazabilidad
-        import_id SERIAL PRIMARY KEY,
+        id_stg_diario_documento BIGSERIAL PRIMARY KEY,
+        batch_id uuid not null default gen_random_uuid(),
         import_date TIMESTAMP DEFAULT NOW(),
         -- Estructura Organizativa SAP
         sociedad_sap TEXT,

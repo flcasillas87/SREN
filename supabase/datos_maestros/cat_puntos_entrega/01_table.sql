@@ -12,6 +12,10 @@ CREATE TABLE datos_maestros.cat_puntos_entrega (
     activo bool DEFAULT true,
     created_at timestamptz DEFAULT now(),
     updated_at timestamptz DEFAULT now(),
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
     CONSTRAINT cat_puntos_entrega_pkey PRIMARY KEY (id_punto),
     CONSTRAINT cat_puntos_entrega_nombre_key UNIQUE (nombre_punto)
 );

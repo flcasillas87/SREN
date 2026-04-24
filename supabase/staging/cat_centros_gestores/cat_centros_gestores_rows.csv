@@ -1,5 +1,5 @@
-﻿codigo,nombre,activo
-2044,Jefatura GRPN,true
-2277,Gasoducto Corredor Chihuahua,true
-N306,Gas. Corredor Chihuahua,true
-N331,CC NORTE II,true
+id_centro_gestor,codigo,nombre,sociedad_id,activo,created_at,updated_at,created_by,updated_by
+4494c3cd-d05f-42fc-8a2e-b25d11df47a4,2044,Jefatura GRPN,,true,2026-04-21 18:18:08.531123+00,2026-04-21 18:21:53.490656+00,csv_import,csv_import
+d98e5668-784d-437e-ac43-d6a0b60c526a,2277,Gasoducto Corredor Chihuahua,,true,2026-04-21 18:21:53.490656+00,2026-04-21 18:21:53.490656+00,csv_import,csv_import
+f5295102-a365-4f70-9b41-f6c20bdca333,N306,Gasoducto Corredor Chihuahua,,true,2026-04-21 18:21:53.490656+00,2026-04-21 18:29:25.660921+00,csv_import,csv_import
+ffddef1d-12f8-4257-8635-a548a9e3c7b3,N331,CC NORTE II,,true,2026-04-21 18:21:53.490656+00,2026-04-21 18:21:53.490656+00,csv_import,csv_import

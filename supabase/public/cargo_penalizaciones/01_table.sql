@@ -35,6 +35,10 @@ create table public.penalizacion (
     notas text null,
     created_at timestamp null default (now() at time zone 'America/Monterrey'),
     updated_at timestamp null default (now() at time zone 'America/Monterrey'),
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
     constraint penalizacion_pkey primary key (id_penalizacion),
     constraint penalizacion_uq_linea unique (id_factura, num_linea),
     -- no duplicar línea

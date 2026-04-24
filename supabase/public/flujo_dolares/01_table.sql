@@ -14,5 +14,9 @@ CREATE TABLE IF NOT EXISTS datos_maestros.flujo_mensual_transporte (
     tipo_cambio_proyectado numeric(12,4),
     monto_mxn numeric(18,2),
     
-    created_at timestamp DEFAULT (now() AT TIME ZONE 'America/Monterrey')
+    created_at timestamp DEFAULT (now() AT TIME ZONE 'America/Monterrey'),
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid()
 );

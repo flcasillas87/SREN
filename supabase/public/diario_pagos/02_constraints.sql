@@ -14,8 +14,8 @@ alter table public.diario_pagos
 
 alter table public.diario_pagos
     add constraint fk_diario_pagos_documento
-    foreign key (documento_id)
-    references public.diario_documentos (id)
+    foreign key (id_documento)
+    references public.diario_documentos (id_documento)
     on delete cascade;
 
 alter table public.diario_pagos

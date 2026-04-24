@@ -1,18 +1,23 @@
 -- =========================================================
--- 02_transform.sql
--- Crear tabla TRANSFORM
+-- Esquema: staging
+-- Tabla: precios_vinculantes_combustibles_normalized
+-- Archivo: 01.table.sql
+-- Descripcion: Estructura normalizada homologada con otros pipelines
 -- =========================================================
-drop table if exists transform.trf_precios_vinculantes_combustibles cascade;
-create table transform.trf_precios_vinculantes_combustibles (
+
+drop table if exists staging.precios_vinculantes_combustibles_normalized cascade;
+
+create table staging.precios_vinculantes_combustibles_normalized (
+    source_row bigint not null,
     batch_id uuid not null,
-    fecha date,
-    nombre_combustible text,
-    nombre_unidad_medida text,
-    nombre_central text,
-    precio_vinculante_combustibles numeric(15, 4),
-    fuente text,
-    observaciones text,
-    es_valido boolean,
-    error_motivo text,
-    fecha_transform timestamp default (now() at time zone 'America/Monterrey')
+    fecha date null,
+    nombre_combustible text null,
+    nombre_unidad_medida text null,
+    nombre_central text null,
+    precio_vinculante_combustibles numeric(15, 4) null,
+    fuente text null,
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null,
+    usuario_carga uuid null
 );

@@ -15,6 +15,10 @@ create table datos_maestros.cat_centrales_generacion (
     combustible_secundario text null,
     created_at timestamp null default (now() at time zone 'America/Monterrey'),
     updated_at timestamp null default (now() at time zone 'America/Monterrey'),
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
     constraint centrales_pkey primary key (id_central_generacion),
     constraint uq_nombre_central unique (nombre_central)
 ) TABLESPACE pg_default;

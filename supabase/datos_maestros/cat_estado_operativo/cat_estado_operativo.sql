@@ -13,6 +13,10 @@ CREATE TABLE IF NOT EXISTS datos_maestros.cat_estado_operativo (
     created_at timestamp NULL DEFAULT (now() AT TIME ZONE 'America/Monterrey'),
     updated_at timestamp NULL DEFAULT (now() AT TIME ZONE 'America/Monterrey'),
 
+    observaciones text null,
+    archivo_origen text null,
+    fecha_carga timestamp null default (now() at time zone 'America/Monterrey'),
+    usuario_carga uuid null default auth.uid(),
     CONSTRAINT cat_estado_operativo_estado_key UNIQUE (estado),
     CONSTRAINT cat_estado_operativo_pkey PRIMARY KEY (id_estado)
 );

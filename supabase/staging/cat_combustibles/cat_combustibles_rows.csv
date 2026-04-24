@@ -1,0 +1,7 @@
+id_combustible,nombre_combustible,codigo_corto,descripcion,tipo,es_activo,created_at,updated_at
+1,Gas Natural,,Combustible gaseoso por ducto,,true,2026-01-16 16:01:16.896375,2026-01-16 16:01:16.896375
+2,Combustóleo,,Combustible líquido residual de refinación,,true,2026-01-16 16:01:16.896375,2026-01-16 16:01:16.896375
+3,Diesel,,Combustible destilado para arranque o generación,,true,2026-01-16 16:01:16.896375,2026-01-16 16:01:16.896375
+4,Carbón,,Carbón mineral para centrales termoeléctricas,,true,2026-01-16 16:01:16.896375,2026-01-16 16:01:16.896375
+5,Carbon,,Versión sin acento para compatibilidad,,true,2026-01-16 16:01:16.896375,2026-01-16 16:01:16.896375
+6,Combustoleo,,Versión sin acento para compatibilidad,,true,2026-01-16 16:01:16.896375,2026-01-16 16:01:16.896375
