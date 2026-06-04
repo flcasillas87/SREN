@@ -5,8 +5,8 @@ import { CentralesService } from '@services/centrales.service';
 @Component({
   selector: 'app-central-list-page',
   imports: [CommonModule],
-  templateUrl: './CentralListPage.html',
-  styleUrls: ['./CentralListPage.scss'],
+  templateUrl: './central-list.page.html',
+  styleUrls: ['./central-list.page.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CentralListPage {

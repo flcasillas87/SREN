@@ -24,7 +24,7 @@ export const routes: Routes = [
       {
         path: '',
         loadComponent: () =>
-          import('./features/centrales/pages/central-list/CentralListPage').then(
+          import('./features/centrales/pages/central-list/central-list.page').then(
             (m) => m.CentralListPage,
           ),
       },

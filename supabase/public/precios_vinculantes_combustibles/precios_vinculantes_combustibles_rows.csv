@@ -1,0 +1,2 @@
+id_precio_vinculante_combustible,fecha,id_combustible,id_unidad_medida,id_central_generacion,precio_vinculante_combustibles,fuente,observaciones,es_activo,created_at,updated_at,created_by,archivo_origen,fecha_carga,usuario_carga
+1,2026-06-04,1,1,1,1234.5678,Prueba interna,Registro de prueba para módulo de precios vinculantes.,true,2026-06-04 11:12:46.784691,2026-06-04 11:12:46.784691,,,2026-06-04 11:12:46.784691,

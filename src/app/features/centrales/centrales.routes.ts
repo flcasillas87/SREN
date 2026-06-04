@@ -1,7 +1,7 @@
 import type { Routes } from '@angular/router';
 import { CentralDetallePage } from '@centrales/pages/central-detalle/central-detalle.page';
 import { CentralHistoricoPage } from '@centrales/pages/central-historico/central-historico.page';
-import { CentralListPage } from '@centrales/pages/central-list/CentralListPage';
+import { CentralListPage } from '@centrales/pages/central-list/central-list.page';
 import { CentralOperacionPage } from '@centrales/pages/central-operacion/central-operacion.page';
 
 import { CentralesLayout } from './layout/centrales-layout/centrales-layout';
