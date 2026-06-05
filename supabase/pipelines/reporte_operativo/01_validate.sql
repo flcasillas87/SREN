@@ -1,0 +1,6 @@
+-- =========================================================
+-- Pipeline: reporte_operativo
+-- Archivo: 01_validate.sql
+-- Origen: reporte_operativo.reporte_operativo
+-- Destino: public.reporte_operativo
+-- =========================================================

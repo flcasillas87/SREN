@@ -1,0 +1,8 @@
+-- =============================================================================
+-- 00_functions.sql
+-- Funciones relacionadas con la tabla fact_precio_vinculante.
+--
+-- Actualmente esta carpeta no define funciones específicas.
+-- Aquí pueden agregarse reglas de negocio, validaciones o auditoría de cambios
+-- en el futuro, siguiendo el patrón usado por otros módulos del proyecto.
+-- =============================================================================

@@ -1,0 +1,13 @@
+-- =============================================================================
+-- 00_functions.sql
+-- Funciones para el módulo reporte_operativo.
+-- =============================================================================
+--
+-- Este archivo queda reservado para funciones de negocio, validaciones o
+-- auditoría específicas del módulo `reporte_operativo`.
+--
+-- Ejemplo futuro:
+--   - validar rangos de entrega
+--   - calcular importes antes de insert/update
+--   - detectar cambios relevantes en volumen o precio
+-- =============================================================================

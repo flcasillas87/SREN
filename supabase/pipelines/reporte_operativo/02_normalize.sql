@@ -1,0 +1,6 @@
+-- =========================================================
+-- Pipeline: reporte_operativo
+-- Archivo: 02_normalize.sql
+-- Origen: reporte_operativo.reporte_operativo
+-- Destino: public.reporte_operativo
+-- =========================================================

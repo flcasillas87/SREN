@@ -1,0 +1,6 @@
+-- =========================================================
+-- Pipeline: reporte_operativo
+-- Archivo: 04_merge_to_public.sql
+-- Origen: reporte_operativo.reporte_operativo
+-- Destino: public.reporte_operativo
+-- =========================================================
