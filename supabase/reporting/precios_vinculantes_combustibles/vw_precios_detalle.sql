@@ -1,3 +1,8 @@
+-- =============================================================================
+-- vw_precios_detalle.sql (renombrado desde 07_view.sql)
+-- =============================================================================
+-- Vista: detalle de precios vinculantes con costo en MBTU
+-- =============================================================================
 create or replace view reporting.vw_precios_vinculantes_combustibles as
 select
     p.fecha,

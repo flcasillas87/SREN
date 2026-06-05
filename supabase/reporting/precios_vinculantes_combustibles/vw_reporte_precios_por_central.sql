@@ -1,7 +1,7 @@
 -- =========================================================
 -- Vista: reporte de precios vinculantes por central, año y mes
 -- =========================================================
-create or replace view public.vw_reporte_precios_por_central_ano_mes as
+create or replace view reporting.vw_reporte_precios_por_central_ano_mes as
 select
     cg.id_central_generacion,
     cg.nombre_central,
