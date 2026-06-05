@@ -1,0 +1,2 @@
+id_reporte_operativo_combustibles,fecha_entrega,central_generacion,combustible,unidad_medida,volumen,fuente,observaciones,archivo_origen,es_activo,created_at,updated_at,fecha_carga,usuario_carga
+83585fcc-ddb2-4573-a3a9-84d7866fa8c2,2026-06-01,CT  Carbon II,Gas Natural,Millón de Unidades Térmicas Británicas,1250.5000,Suministro regular,Entrega programada,origen_archivo.csv,true,2026-06-05 14:26:38.195069,2026-06-05 14:26:38.195069,2026-06-05 14:26:38.195069,

@@ -5,15 +5,12 @@
 
 create or replace view reporting.vw_reporte_operativo_combustibles as
 select
-    ro.id_reporte_operativo,
+    ro.id_reporte_operativo_combustibles,
     ro.fecha_entrega,
     cg.nombre_central as central_generacion,
     c.nombre_combustible as combustible,
     um.descripcion as unidad_medida,
     ro.volumen,
-    ro.precio_unitario,
-    ro.moneda,
-    round(ro.volumen * coalesce(ro.precio_unitario, 0), 4) as importe,
     ro.fuente,
     ro.observaciones,
     ro.archivo_origen,
@@ -22,7 +19,7 @@ select
     ro.updated_at,
     ro.fecha_carga,
     ro.usuario_carga
-from public.reporte_operativo ro
+from public.reporte_operativo_combustibles ro
 inner join datos_maestros.cat_centrales_generacion cg
     on cg.id_central_generacion = ro.id_central_generacion
 inner join datos_maestros.cat_combustibles c

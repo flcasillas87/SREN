@@ -1,0 +1,2 @@
+id_reporte_operativo_combustibles,fecha_entrega,id_central_generacion,id_combustible,id_unidad_medida,volumen,fuente,observaciones,archivo_origen,es_activo,created_at,updated_at,created_by,fecha_carga,usuario_carga
+83585fcc-ddb2-4573-a3a9-84d7866fa8c2,2026-06-01,e7970070-56ec-4aac-87b1-c0364615802a,9693a1d1-4b88-4d73-8138-b46b21e7a72c,3eb2cdf0-c617-4656-b2b7-a01deb1de932,1250.5000,Suministro regular,Entrega programada,origen_archivo.csv,true,2026-06-05 14:26:38.195069,2026-06-05 14:26:38.195069,,2026-06-05 14:26:38.195069,
