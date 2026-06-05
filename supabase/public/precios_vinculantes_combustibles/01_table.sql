@@ -5,12 +5,12 @@ drop table if exists public.audit_precios_vinculantes_combustibles cascade;
 drop table if exists public.precios_vinculantes_combustibles cascade;
 
 create table public.precios_vinculantes_combustibles (
-    id_precio_vinculante_combustible bigint generated always as identity not null,
+    id_precio_vinculante_combustible uuid not null default extensions.uuid_generate_v4(),
     fecha date not null,
-    id_combustible integer not null,
-    id_unidad_medida integer not null,
-    id_central_generacion integer not null,
-    precio_vinculante_combustibles numeric(15, 4) not null,
+    id_combustible uuid not null,
+    id_unidad_medida uuid not null,
+    id_central_generacion uuid not null,
+    precio_vinculante_combustibles numeric(15, 4) null,
     fuente text null,
     observaciones text null,
     es_activo boolean default true,
@@ -26,7 +26,7 @@ create table public.precios_vinculantes_combustibles (
 -- =============================================================================
 create table public.audit_precios_vinculantes_combustibles (
     id_audit_precio_vinculante_combustible bigint generated always as identity primary key,
-    id_precio_vinculante_combustible bigint not null,
+    id_precio_vinculante_combustible uuid not null,
     precio_anterior numeric(15, 4),
     precio_nuevo numeric(15, 4),
     usuario_cambio uuid,

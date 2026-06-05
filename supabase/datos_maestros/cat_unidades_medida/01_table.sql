@@ -4,11 +4,11 @@
 -- =========================================================
 drop table if exists datos_maestros.cat_unidades_medida cascade;
 create table datos_maestros.cat_unidades_medida (
-  id_unidad_medida serial not null,
+  id_unidad_medida uuid not null default extensions.uuid_generate_v4(),
   codigo character varying(20) not null,
   descripcion text null,
   factor_conversion_mbtu numeric(15, 8) not null,
-  id_combustible integer not null,
+  id_combustible uuid not null,
   es_activo boolean null default true,
   created_at timestamp null default (now() at time zone 'America/Monterrey'),
   updated_at timestamp null default (now() at time zone 'America/Monterrey'),

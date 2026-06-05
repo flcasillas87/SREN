@@ -1,0 +1,7 @@
+﻿id_combustible,nombre_combustible,codigo_corto,descripcion,tipo,es_activo,created_at,updated_at
+9693a1d1-4b88-4d73-8138-b46b21e7a72c,Gas Natural,,Combustible gaseoso por ducto,,true,2026-01-16 16:01:16.896375,2026-01-16 16:01:16.896375
+00b73cac-a0c0-4c26-84b1-ff342362199b,Combustóleo,,Combustible líquido residual de refinación,,true,2026-01-16 16:01:16.896375,2026-01-16 16:01:16.896375
+ef25f8f8-6193-4ccd-a9fd-25cb325a4343,Diesel,,Combustible destilado para arranque o generación,,true,2026-01-16 16:01:16.896375,2026-01-16 16:01:16.896375
+210e527b-4ebb-47bb-ae09-01722776ceb6,Carbón,,Carbón mineral para centrales termoeléctricas,,true,2026-01-16 16:01:16.896375,2026-01-16 16:01:16.896375
+ef17a757-d47f-44c3-859f-94b254c29fbd,Carbon,,Versión sin acento para compatibilidad,,true,2026-01-16 16:01:16.896375,2026-01-16 16:01:16.896375
+64991cfc-2837-4db9-98ad-7397b43bdea1,Combustoleo,,Versión sin acento para compatibilidad,,true,2026-01-16 16:01:16.896375,2026-01-16 16:01:16.896375

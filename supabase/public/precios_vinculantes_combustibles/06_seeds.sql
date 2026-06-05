@@ -5,7 +5,7 @@
 -- =========================================================
 
 -- Semillas de datos no incluidas por dependencia de tablas maestras.
--- Ajustar `id_combustible`, `id_unidad_medida` y `id_central_generacion` según los catálogos existentes.
+-- Ajustar `id_combustible`, `id_unidad_medida` y `id_central_generacion` a UUID según los catálogos existentes.
 
 insert into public.precios_vinculantes_combustibles (
     fecha,
